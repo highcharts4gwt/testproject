@@ -1,4 +1,4 @@
-package org.usesoft.gwthighcharts.client;
+package com.usesoft.gwthighcharts.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -6,46 +6,29 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.SimpleLayoutPanel;
+import com.usesoft.gwthighcharts.client.widget.HighchartsLayoutPanel;
+import com.usesoft.gwthighcharts.model.jso.TitleJso;
 
 public class testproject implements EntryPoint {
 
 	public void onModuleLoad() {
 		DockLayoutPanel dlp = new DockLayoutPanel(Unit.PX);
 
-		SimpleLayoutPanel container = new SimpleLayoutPanel();
-		container.getElement().setId("container");
+		HighchartsLayoutPanel container = new HighchartsLayoutPanel();
 
 		dlp.addNorth(new Label("North"), 100);
 		dlp.addWest(new Label("West"), 100);
 		dlp.addSouth(new Label("South"), 100);
+		
 		dlp.add(container);
+		
 		RootLayoutPanel.get().add(dlp);
-
-		displayChart(TitleJso.create("test ronan"));
+		
+		container.setChart(buildOptions(TitleJso.create("test ronan 2")));
 	}
 
-	interface Title {
-		String getText();
-	}
-
-	/** The JSO implementation of Person. */
-	public static class TitleJso extends JavaScriptObject implements Title {
-		protected TitleJso() {
-		}
-
-		public static native TitleJso create(String text) /*-{
-			return {
-				text : text
-			};
-		}-*/;
-
-		public final native String getText() /*-{
-			return this.text;
-		}-*/;
-	}
-
-	public static native void displayChart(TitleJso title) /*-{
+	
+	public static native JavaScriptObject buildOptions(TitleJso title) /*-{
 
 		var option = {
 			subtitle : {
@@ -99,8 +82,7 @@ public class testproject implements EntryPoint {
 		};
 		
 		option.title = title;
-
-		$wnd.jQuery('#container').highcharts(option);
+		return option;
 	}-*/;
 
 }

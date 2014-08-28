@@ -6,7 +6,7 @@
 
   <!-- POM file generated with GWT webAppCreator -->
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.usesoft.gwthighcharts</groupId>
+  <groupId>com.usesoft.gwthighcharts</groupId>
   <artifactId>testproject</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
@@ -21,6 +21,11 @@
   </properties>
 
   <dependencies>
+  	<dependency>
+      <groupId>com.usesoft.gwthighcharts</groupId>
+      <artifactId>gwthighcharts</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>
