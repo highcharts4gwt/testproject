@@ -1,4 +1,4 @@
-package com.usesoft.gwthighcharts.client;
+package com.usesoft.highcharts4gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.JavaScriptObject;
@@ -6,8 +6,8 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.usesoft.gwthighcharts.client.widget.HighchartsLayoutPanel;
-import com.usesoft.gwthighcharts.model.jso.TitleJso;
+import com.usesoft.highcharts4gwt.client.view.widget.HighchartsLayoutPanel;
+import com.usesoft.highcharts4gwt.model.jso.TitleJso;
 
 public class testproject implements EntryPoint {
 
