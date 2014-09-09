@@ -17,7 +17,7 @@
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client' />
-  <source path='model' />
+  <source path='generated' />
   <source path='shared' />
 
 </module>
