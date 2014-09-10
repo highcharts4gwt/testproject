@@ -85,8 +85,12 @@
         <configuration>
           <runTarget>testproject.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <compileSourcesArtifacts>
+          <artifact>com.usesoft.highcharts4gwt:highcharts4gwt</artifact>
+        </compileSourcesArtifacts>
           <!-- <i18nMessagesBundle>org.usesoft.gwthighcharts.client.Messages</i18nMessagesBundle> -->
         </configuration>
+
       </plugin>
 
       <!-- Copy static web files before executing gwt:run -->

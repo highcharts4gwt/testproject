@@ -1,2 +1,4 @@
 /target
 /.settings
+/gwt-unitCache
+/war

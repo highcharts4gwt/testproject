@@ -15,9 +15,8 @@
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.usesoft.highcharts4gwt.client.testproject' />
 
+  <inherits name='com.usesoft.highcharts4gwt.Highcharts4gwt' />
   <!-- Specify the paths for translatable code                    -->
   <source path='client' />
-  <source path='model' />
-  <source path='shared' />
 
 </module>
