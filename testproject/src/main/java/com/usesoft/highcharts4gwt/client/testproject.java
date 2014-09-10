@@ -2,13 +2,19 @@ package com.usesoft.highcharts4gwt.client;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArrayNumber;
+import com.google.gwt.core.client.JsArrayString;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.usesoft.highcharts4gwt.client.view.widget.HighchartsLayoutPanel;
-import com.usesoft.highcharts4gwt.generated.highcharts.api.ChartOptions;
-import com.usesoft.highcharts4gwt.generated.highcharts.jso.JsoChartOptions;
+import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
+import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
+import com.usesoft.highcharts4gwt.model.array.jso.JsoArrayNumber;
+import com.usesoft.highcharts4gwt.model.array.jso.JsoArrayString;
+import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
+import com.usesoft.highcharts4gwt.model.highcharts.jso.JsoChartOptions;
 
 public class testproject implements EntryPoint
 {
@@ -34,9 +40,26 @@ public class testproject implements EntryPoint
         options.subtitle().text("sub ronan");
         options.title().text("Title");
 
+        ArrayString months = (JsoArrayString) JsArrayString.createArray();
+        months.push("janvier");
+        months.push("fev");
+        months.push("mars");
+        months.push("avril");
+        options.lang().months(months);
+
         // Options options = factory.create();
         // options.title().text("Test Ronan 2");
 
+        // Series value = (JsoSeries) JavaScriptObject.createObject();
+        ArrayNumber data = (JsoArrayNumber) JsArrayNumber.createArray();
+        data.insert(0, 10);
+        data.insert(0, 20);
+        data.insert(0, 30);
+        data.insert(0, 40);
+        data.insert(0, 50);
+        // value.data(data);
+
+        // options.series().push(value);
         container.renderChart(options);
 
         // Timer timer = new Timer() {
