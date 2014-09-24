@@ -11,7 +11,6 @@ import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
-import com.usesoft.highcharts4gwt.model.highcharts.jso.JsoChartOptions;
 
 public class testproject implements EntryPoint
 {
