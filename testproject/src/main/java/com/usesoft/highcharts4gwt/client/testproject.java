@@ -32,7 +32,7 @@ public class testproject implements EntryPoint
 
         // OptionsFactory factory = new OptionsFactoryJso();
 
-        ChartOptions options = (JsoChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
         
         options.subtitle().text("Chart reflow is set to true");
         options.title().text("Chart reflow is set to true");
