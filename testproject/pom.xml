@@ -23,7 +23,7 @@
   <dependencies>
   	<dependency>
       <groupId>com.usesoft.highcharts4gwt</groupId>
-      <artifactId>highcharts4gwt</artifactId>
+      <artifactId>highcharts</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -80,15 +80,17 @@
             </goals>
           </execution>
         </executions>
+      
         <!-- Plugin configuration. There are many available options, see 
           gwt-maven-plugin documentation at codehaus.org -->
         <configuration>
           <runTarget>testproject.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <compileSourcesArtifacts>
-          <artifact>com.usesoft.highcharts4gwt:highcharts4gwt</artifact>
-        </compileSourcesArtifacts>
+              <artifact>com.usesoft.highcharts4gwt:highcharts</artifact>
+          </compileSourcesArtifacts>
           <!-- <i18nMessagesBundle>org.usesoft.gwthighcharts.client.Messages</i18nMessagesBundle> -->
+          
         </configuration>
 
       </plugin>
