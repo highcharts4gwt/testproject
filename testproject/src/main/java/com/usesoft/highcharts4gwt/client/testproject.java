@@ -91,8 +91,13 @@ public class testproject implements EntryPoint
         options.chart().zoomType("x").resetZoomButton().relativeTo("plot").position("{\"verticalAlign\": \"bottom\",\"align\": \"left\"}");
         options.subtitle().text("Chart reflow is set to true");
         options.title().text("Chart reflow is set to true");
-        
+
         options.legend().itemHoverStyle("{\"color\": \"#FF0000\"}");
+
+        options.legend().borderWidth(3);
+
+        options.legend().title().style("{\"fontWeight\":\"bold\"}");
+        options.legend().title().text("Legend title");
 
         Series series = (Series) JavaScriptObject.createObject();
 
