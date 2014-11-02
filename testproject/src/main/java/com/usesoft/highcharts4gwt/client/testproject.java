@@ -98,7 +98,10 @@ public class testproject implements EntryPoint
 
         options.legend().title().style("{\"fontWeight\":\"bold\"}");
         options.legend().title().text("Legend title");
-
+        options.legend().borderColor("green").borderWidth(1.0d);
+        options.legend().backgroundColor("#FFFFFF");
+        options.legend().shadowAsJsonString("{\"color\":\"red\",\"offsetX\":\"10\",\"offsetY\":\"10\",\"opacity\":\"0.5\",\"width\":\"5\"}");
+        
         Series series = (Series) JavaScriptObject.createObject();
 
         ArrayNumber data = series.data();
