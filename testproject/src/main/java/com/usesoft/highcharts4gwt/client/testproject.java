@@ -31,7 +31,7 @@ public class testproject implements EntryPoint
 
         // OptionsFactory factory = new OptionsFactoryJso();
 
-        ChartOptions options = chart1();
+        ChartOptions options = chart3D();
 
         // JSONObject test = new JSONObject((JavaScriptObject)options);
         // System.out.println(test.toString());
@@ -84,10 +84,46 @@ public class testproject implements EntryPoint
         return options;
     }
 
+    private ChartOptions chart3D()
+    {
+        // http://jsfiddle.net/gh/get/jquery/1.7.2/highslide-software/highcharts.com/tree/master/samples/highcharts/chart/type-bar/
+
+        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        options.chart().type("column");
+        options.chart().margin().push(75);
+        options.chart().options3d().enabled(true).alpha(15).beta(15).depth(50).viewDistance(25);
+
+        options.subtitle().text("Subtitle 3D");
+        options.title().text("Title 3D");
+
+        options.plotOptions().column().depth(25);
+
+        Series series = (Series) JavaScriptObject.createObject();
+
+        ArrayNumber data = series.data();
+        data.push(29.9);
+        data.push(71.5);
+        data.push(106.4);
+        data.push(129.2);
+        data.push(144.0);
+        data.push(176.0);
+        data.push(135.6);
+        data.push(148.5);
+        data.push(216.4);
+        data.push(194.1);
+        data.push(95.6);
+        data.push(54.4);
+
+        options.series().addToEnd(series);
+
+        return options;
+    }
+
     private ChartOptions chart1()
     {
         ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
 
+        options.colors().insert(0, "#008dd3");
         options.chart().zoomType("x").resetZoomButton().relativeTo("plot").position("{\"verticalAlign\": \"bottom\",\"align\": \"left\"}");
         options.subtitle().text("Chart reflow is set to true");
         options.title().text("Chart reflow is set to true");
