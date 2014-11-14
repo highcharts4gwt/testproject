@@ -7,6 +7,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Widget;
 import com.usesoft.highcharts4gwt.client.view.region.Region;
 import com.usesoft.highcharts4gwt.client.view.region.RegionContainer;
@@ -26,13 +27,13 @@ public class RootViewImpl extends Composite implements RootView
     @UiField(provided = true)
     RegionContainer westRegionContainer;
 
-    @Inject
-    @UiField(provided = true)
-    RegionContainer eastRegionContainer;
-
-    @Inject
-    @UiField(provided = true)
-    RegionContainer southRegionContainer;
+     @Inject
+     @UiField(provided = true)
+     RegionContainer eastRegionContainer;
+    
+     @Inject
+     @UiField(provided = true)
+     RegionContainer southRegionContainer;
 
     @Inject
     @UiField(provided = true)
@@ -52,25 +53,29 @@ public class RootViewImpl extends Composite implements RootView
     {
         initWidget(binder.createAndBindUi(this));
         regionVisibilityVisitor = new RegionVisibilityVisitor(northRegionContainer, southRegionContainer, eastRegionContainer, westRegionContainer,
-                centerRegionContainer, rootContainer);
+                        centerRegionContainer, rootContainer);
         regionContainerGetter = new RegionContainerGetterVisitor(northRegionContainer, southRegionContainer, eastRegionContainer, westRegionContainer,
-                centerRegionContainer);
+                        centerRegionContainer);
 
         northRegionContainer.setRootView(this);
-
         westRegionContainer.setRootView(this);
         eastRegionContainer.setRootView(this);
         southRegionContainer.setRootView(this);
         centerRegionContainer.setRootView(this);
 
-        northRegionContainer.setRegionw(Region.North);
-        westRegionContainer.setRegionw(Region.West);
-        eastRegionContainer.setRegionw(Region.East);
-        southRegionContainer.setRegionw(Region.South);
-        centerRegionContainer.setRegionw(Region.Center);
-
+        northRegionContainer.setRegion(Region.North);
+        westRegionContainer.setRegion(Region.West);
+        eastRegionContainer.setRegion(Region.East);
+        southRegionContainer.setRegion(Region.South);
+        centerRegionContainer.setRegion(Region.Center);
+        
+        
+        northRegionContainer.setWidget(null);
+        westRegionContainer.setWidget(null);
+        eastRegionContainer.setWidget(null);
+        southRegionContainer.setWidget(null);
+        centerRegionContainer.setWidget(null);
     }
-
 
     @Override
     public void setRegionVisibility(Region region, boolean visible)

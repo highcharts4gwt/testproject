@@ -1,4 +1,4 @@
-package com.usesoft.highcharts4gwt.client.logic.activitymapper;
+package com.usesoft.highcharts4gwt.client.logic.activitymapper.south;
 
 import javax.inject.Inject;
 
@@ -7,10 +7,10 @@ import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.usesoft.highcharts4gwt.client.logic.place.BasePlace;
 
-public class WestActivityMapper implements ActivityMapper
+public class SouthActivityMapper implements ActivityMapper
 {
     @Inject
-    WestPlaceToActivityVisitor visitor;
+    SouthPlaceToActivityVisitor visitor;
 
     @Override
     public Activity getActivity(Place place)

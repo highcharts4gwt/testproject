@@ -2,9 +2,9 @@ package com.usesoft.highcharts4gwt.client.logic.activity;
 
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.usesoft.highcharts4gwt.client.view.north.NorthView1;
+import com.usesoft.highcharts4gwt.client.view.west.WestView1;
 
-public class NorthActivityHighcharts extends BaseActivity<NorthView1> implements Activity
+public class WestActivityHighcharts extends BaseActivity<WestView1> implements Activity
 {
 
     @Override

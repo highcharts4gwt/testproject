@@ -1,4 +1,4 @@
-package com.usesoft.highcharts4gwt.client.view.west;
+package com.usesoft.highcharts4gwt.client.view.north;
 
 import javax.inject.Inject;
 
@@ -9,18 +9,18 @@ import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Widget;
 
-public class WestViewImpl extends Composite implements WestView
+public class HeaderViewImpl extends Composite implements HeaderView
 {
     private Presenter presenter;
 
     @Inject
-    public WestViewImpl(WestViewUiBinder binder)
+    public HeaderViewImpl(WestViewUiBinder binder)
     {
         initWidget(binder.createAndBindUi(this));
     }
 
-    @UiTemplate("WestView.ui.xml")
-    interface WestViewUiBinder extends UiBinder<Widget, WestViewImpl>
+    @UiTemplate("HeaderView.ui.xml")
+    interface WestViewUiBinder extends UiBinder<Widget, HeaderViewImpl>
     {
 
     }

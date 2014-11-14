@@ -1,7 +1,7 @@
 package com.usesoft.highcharts4gwt.client.view.region;
 
-import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.SimpleLayoutPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootView;
 
 public class SimpleLayoutPanelRegionContainer extends SimpleLayoutPanel implements RegionContainer
@@ -10,7 +10,7 @@ public class SimpleLayoutPanelRegionContainer extends SimpleLayoutPanel implemen
     private Region region;
 
     @Override
-    public void setWidget(IsWidget w)
+    public void setWidget(Widget w)
     {
         // TODO use a presenter not a view this is logic !!!
         if (w == null)
@@ -33,7 +33,7 @@ public class SimpleLayoutPanelRegionContainer extends SimpleLayoutPanel implemen
     }
 
     @Override
-    public void setRegionw(Region region)
+    public void setRegion(Region region)
     {
         this.region = region;
     }

@@ -1,8 +1,8 @@
-package com.usesoft.highcharts4gwt.client.view.west;
+package com.usesoft.highcharts4gwt.client.view.north;
 
 import com.google.gwt.user.client.ui.IsWidget;
 
-public interface WestView extends IsWidget
+public interface HeaderView extends IsWidget
 {
     void setPresenter(Presenter presenter);
 

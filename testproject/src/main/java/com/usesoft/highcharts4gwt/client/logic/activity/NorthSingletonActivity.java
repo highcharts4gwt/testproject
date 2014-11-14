@@ -7,9 +7,9 @@ import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.PlaceControllerHolder;
 import com.usesoft.highcharts4gwt.client.logic.place.Highcharts;
 import com.usesoft.highcharts4gwt.client.logic.place.HighMaps;
-import com.usesoft.highcharts4gwt.client.view.west.WestView;
+import com.usesoft.highcharts4gwt.client.view.north.HeaderView;
 
-public class WestSingletonActivity extends BaseActivity<WestView> implements Activity, WestView.Presenter
+public class NorthSingletonActivity extends BaseActivity<HeaderView> implements Activity, HeaderView.Presenter
 {
     @Inject
     PlaceControllerHolder placeControllerHolder;

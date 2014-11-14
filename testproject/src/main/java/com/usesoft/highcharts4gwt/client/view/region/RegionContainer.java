@@ -14,7 +14,7 @@ public interface RegionContainer extends HasOneWidget, IsWidget
 
     void setRootView(RootView rootView);
 
-    void setRegionw(Region region);
+    void setRegion(Region region);
 
     Region getRegion();
 }
