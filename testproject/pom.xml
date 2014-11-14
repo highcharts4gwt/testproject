@@ -18,9 +18,20 @@
     <!-- GWT needs at least java 1.5 -->
     <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+     <ginVersion>2.1.2</ginVersion>
   </properties>
 
   <dependencies>
+  	<dependency>
+      <groupId>javax.inject</groupId>
+      <artifactId>javax.inject</artifactId>
+      <version>1</version>
+    </dependency>
+    <dependency>
+		<groupId>com.google.gwt.inject</groupId>
+	    <artifactId>gin</artifactId>
+		<version>${ginVersion}</version>
+	</dependency>
   	<dependency>
       <groupId>com.usesoft.highcharts4gwt</groupId>
       <artifactId>highcharts</artifactId>
