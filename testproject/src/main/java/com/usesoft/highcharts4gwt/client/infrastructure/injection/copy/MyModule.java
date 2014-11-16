@@ -12,16 +12,16 @@ import com.usesoft.highcharts4gwt.client.logic.activitymapper.PlaceControllerHol
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.north.NorthPlaceToActivityVisitor;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.west.WestPlaceToActivityVisitor;
 import com.usesoft.highcharts4gwt.client.logic.presenter.RootPresenter;
-import com.usesoft.highcharts4gwt.client.view.center.HighchartsCenterView;
-import com.usesoft.highcharts4gwt.client.view.center.HighchartsCenterViewImpl;
+import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
+import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighchartsImpl;
 import com.usesoft.highcharts4gwt.client.view.north.HeaderView;
 import com.usesoft.highcharts4gwt.client.view.north.HeaderViewImpl;
 import com.usesoft.highcharts4gwt.client.view.region.RegionContainer;
 import com.usesoft.highcharts4gwt.client.view.region.SimpleLayoutPanelRegionContainer;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootView;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootViewImpl;
-import com.usesoft.highcharts4gwt.client.view.west.WestView1;
-import com.usesoft.highcharts4gwt.client.view.west.WestView1Impl;
+import com.usesoft.highcharts4gwt.client.view.west.WestViewHighcharts;
+import com.usesoft.highcharts4gwt.client.view.west.WestViewHighchartsImpl;
 
 public class MyModule extends AbstractGinModule
 {
@@ -32,9 +32,9 @@ public class MyModule extends AbstractGinModule
         bind(RootView.class).to(RootViewImpl.class).in(Singleton.class);
         bind(RegionContainer.class).to(SimpleLayoutPanelRegionContainer.class);
 
-        bind(WestView1.class).to(WestView1Impl.class);
+        bind(WestViewHighcharts.class).to(WestViewHighchartsImpl.class);
         bind(HeaderView.class).to(HeaderViewImpl.class);
-        bind(HighchartsCenterView.class).to(HighchartsCenterViewImpl.class);
+        bind(CenterViewHighcharts.class).to(CenterViewHighchartsImpl.class);
 
         // Presenters
         bind(RootView.Presenter.class).to(RootPresenter.class).in(Singleton.class);

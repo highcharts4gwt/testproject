@@ -10,22 +10,23 @@ import com.google.gwt.user.client.ui.Widget;
 import com.usesoft.highcharts4gwt.client.view.widget.HighchartsLayoutPanel;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 
-public class HighchartsCenterViewImpl extends Composite implements HighchartsCenterView
+public class CenterViewHighchartsImpl extends Composite implements CenterViewHighcharts
 {
     private Presenter presenter;
     
-    @Inject
     @UiField
     HighchartsLayoutPanel chartPanel;
     
     @Inject
-    public HighchartsCenterViewImpl(WestViewUiBinder binder)
+    public CenterViewHighchartsImpl(Binder binder)
     {
         initWidget(binder.createAndBindUi(this));
+        this.addStyleName("composite-ronan");
+        chartPanel.addStyleName("cahrtpanel-ronan");
     }
 
-    @UiTemplate("HighchartsCenterView.ui.xml")
-    interface WestViewUiBinder extends UiBinder<Widget, HighchartsCenterViewImpl>
+    @UiTemplate("CenterViewHighcharts.ui.xml")
+    interface Binder extends UiBinder<Widget, CenterViewHighchartsImpl>
     {
 
     }

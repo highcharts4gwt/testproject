@@ -4,7 +4,5 @@
 	xmlns:m="urn:import:com.usesoft.highcharts4gwt.client.view.region"
 	xmlns:h4g="urn:import:com.usesoft.highcharts4gwt.client.view.widget"
 	>
-	<g:SimpleLayoutPanel>
-		<h4g:HighchartsLayoutPanel ui:field="chartPanel"></h4g:HighchartsLayoutPanel>
-	</g:SimpleLayoutPanel>
+	<h4g:HighchartsLayoutPanel ui:field="chartPanel"></h4g:HighchartsLayoutPanel>
 </ui:UiBinder> 

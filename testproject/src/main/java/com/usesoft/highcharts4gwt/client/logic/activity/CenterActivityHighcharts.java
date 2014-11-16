@@ -3,13 +3,13 @@ package com.usesoft.highcharts4gwt.client.logic.activity;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.usesoft.highcharts4gwt.client.view.center.HighchartsCenterView;
+import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
 
-public class HighchartsCenterActivity extends BaseActivity<HighchartsCenterView> implements Activity, HighchartsCenterView.Presenter
+public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts> implements Activity, CenterViewHighcharts.Presenter
 {
     @Override
     public void onStop()
@@ -22,7 +22,6 @@ public class HighchartsCenterActivity extends BaseActivity<HighchartsCenterView>
     {
         panel.setWidget(getView());
         getView().setPresenter(this);
-        
         getView().renderChart(chart3D());
     }
     
