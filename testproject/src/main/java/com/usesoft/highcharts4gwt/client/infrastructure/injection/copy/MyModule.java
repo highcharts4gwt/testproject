@@ -2,11 +2,15 @@ package com.usesoft.highcharts4gwt.client.infrastructure.injection.copy;
 
 import javax.inject.Singleton;
 
+import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.inject.client.AbstractGinModule;
+import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.usesoft.highcharts4gwt.client.logic.activity.WestActivityHighcharts;
+import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighchartsFactory;
+import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighcharts;
 import com.usesoft.highcharts4gwt.client.logic.activity.NorthSingletonActivity;
+import com.usesoft.highcharts4gwt.client.logic.activity.WestActivityHighcharts;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.AppPlaceHistoryMapper;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.PlaceControllerHolder;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.north.NorthPlaceToActivityVisitor;
@@ -50,7 +54,8 @@ public class MyModule extends AbstractGinModule
         // Make this activity a singleton to always use the same activity in west region
         bind(NorthSingletonActivity.class).in(Singleton.class);
         
-        
+        install(new GinFactoryModuleBuilder().implement(Activity.class, CenterActivityHighcharts.class).build(CenterActivityHighchartsFactory.class));
+    
     }
 
 }

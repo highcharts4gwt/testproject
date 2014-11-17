@@ -4,22 +4,22 @@ import com.google.gwt.place.shared.PlaceTokenizer;
 
 public class Highcharts extends BasePlace
 {
-    private final String paramPlace1;
+    private final String chartName;
 
-    public Highcharts(String paramPlace1)
+    public Highcharts(String chartName)
     {
-        this.paramPlace1 = paramPlace1;
+        this.chartName = chartName;
     }
 
-    public String getParamPlace1()
+    public String getChartName()
     {
-        return paramPlace1;
+        return chartName;
     }
 
     public static class Tokenizer implements PlaceTokenizer<Highcharts> {
         @Override
         public String getToken(Highcharts place) {
-            return place.getParamPlace1();
+            return place.getChartName();
         }
 
         @Override

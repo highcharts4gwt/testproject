@@ -53,7 +53,7 @@ public class testproject implements EntryPoint
 
         AppPlaceHistoryMapper historyMapper= injector.getAppPlaceHistoryMapper();
         PlaceHistoryHandler historyHandler = new PlaceHistoryHandler(historyMapper);
-        historyHandler.register(placeControllerHolder.getPlaceController(), placeControllerHolder.getEventBus(), new Highcharts("test"));
+        historyHandler.register(placeControllerHolder.getPlaceController(), placeControllerHolder.getEventBus(), new Highcharts("Chart3D"));
 
         RootLayoutPanel.get().add(rootPresenter.getView().asWidget());
 
