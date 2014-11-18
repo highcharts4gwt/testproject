@@ -49,7 +49,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     public ChartOptions visitChart1(Void in)
     {
         ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
-
+        
+        options.chart().type("column");
         options.colors().insert(0, "#008dd3");
         options.chart().zoomType("x").resetZoomButton().relativeTo("plot").position("{\"verticalAlign\": \"bottom\",\"align\": \"left\"}");
         options.subtitle().text("Chart reflow is set to true");

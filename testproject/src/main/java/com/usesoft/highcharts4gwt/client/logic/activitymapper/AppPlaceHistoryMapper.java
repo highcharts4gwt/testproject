@@ -2,10 +2,10 @@ package com.usesoft.highcharts4gwt.client.logic.activitymapper;
 
 import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.gwt.place.shared.WithTokenizers;
-import com.usesoft.highcharts4gwt.client.logic.place.Highcharts;
-import com.usesoft.highcharts4gwt.client.logic.place.HighMaps;
+import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
 
-@WithTokenizers({ Highcharts.Tokenizer.class, HighMaps.Tokenizer.class })
+@WithTokenizers({ HighchartsPlace.Tokenizer.class, HighMapsPlace.Tokenizer.class })
 public interface AppPlaceHistoryMapper extends PlaceHistoryMapper
 {
 }

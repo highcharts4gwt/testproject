@@ -6,7 +6,7 @@ public interface Presenter<T>
 {
     void start(EventBus eventBus);
 
-    void stop();
-
     T getView();
+    
+    void dispose();
 }

@@ -6,8 +6,8 @@ import javax.inject.Provider;
 
 import com.google.gwt.activity.shared.Activity;
 import com.usesoft.highcharts4gwt.client.logic.activity.WestActivityHighcharts;
-import com.usesoft.highcharts4gwt.client.logic.place.HighMaps;
-import com.usesoft.highcharts4gwt.client.logic.place.Highcharts;
+import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
 import com.usesoft.highcharts4gwt.client.logic.place.PlaceVisitor;
 
 public class WestPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
@@ -16,13 +16,13 @@ public class WestPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
     Provider<WestActivityHighcharts> provider;
 
     @Override
-    public Activity visit(Highcharts place1, Void in)
+    public Activity visit(HighchartsPlace place1, Void in)
     {
         return provider.get();
     }
 
     @Override
-    public Activity visit(HighMaps place2, Void in)
+    public Activity visit(HighMapsPlace place2, Void in)
     {
         return null;
     }

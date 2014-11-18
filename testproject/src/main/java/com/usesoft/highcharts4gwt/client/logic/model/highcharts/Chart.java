@@ -11,9 +11,21 @@ public enum Chart
         }
 
         @Override
-        public String toUrlParam()
+        public String getUrlId()
         {
             return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Chart3D;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Column 3D chart";
         }
     },
     Chart1
@@ -25,9 +37,21 @@ public enum Chart
         }
 
         @Override
-        public String toUrlParam()
+        public String getUrlId()
         {
             return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Column;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Chart with column";
         }
     },
     Chart2
@@ -39,13 +63,29 @@ public enum Chart
         }
 
         @Override
-        public String toUrlParam()
+        public String getUrlId()
         {
             return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Bar;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Chart with bar";
         }
     };
 
     public abstract <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in);
 
-    public abstract String toUrlParam();
+    public abstract String getUrlId();
+    
+    public abstract ChartCategory getCategory();
+    
+    public abstract String getLinkText();
 }

@@ -2,41 +2,43 @@ package com.usesoft.highcharts4gwt.client.logic.activity;
 
 import javax.inject.Inject;
 
-import com.google.gwt.activity.shared.Activity;
-import com.google.gwt.user.client.ui.AcceptsOneWidget;
-import com.usesoft.highcharts4gwt.client.logic.activitymapper.PlaceControllerHolder;
-import com.usesoft.highcharts4gwt.client.logic.place.Highcharts;
-import com.usesoft.highcharts4gwt.client.logic.place.HighMaps;
+import com.usesoft.highcharts4gwt.client.infrastructure.injection.copy.ApplicationContext;
+import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
 import com.usesoft.highcharts4gwt.client.view.north.HeaderView;
 
-public class NorthSingletonActivity extends BaseActivity<HeaderView> implements Activity, HeaderView.Presenter
+public class NorthSingletonActivity extends BaseActivity<HeaderView> implements HeaderView.Presenter
 {
     @Inject
-    PlaceControllerHolder placeControllerHolder;
+    ApplicationContext applicationContext;
 
     @Override
     public void onStop()
     {
-        // TODO Auto-generated method stub
     }
 
     @Override
-    public void onStart(AcceptsOneWidget panel)
+    public void onStart()
     {
-        panel.setWidget(getView());
         getView().setPresenter(this);
     }
 
     @Override
     public void navigateToHighcharts()
     {
-        placeControllerHolder.getPlaceController().goTo(new Highcharts("navigated"));
+        applicationContext.getPlaceController().goTo(new HighchartsPlace("navigated"));
     }
 
     @Override
     public void navigateToHighMaps()
     {
-        placeControllerHolder.getPlaceController().goTo(new HighMaps("navigated"));
+        applicationContext.getPlaceController().goTo(new HighMapsPlace("navigated"));
+    }
+
+    @Override
+    protected void onDispose()
+    {
+        
     }
 
 }

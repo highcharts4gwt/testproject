@@ -2,11 +2,11 @@ package com.usesoft.highcharts4gwt.client.logic.place;
 
 import com.google.gwt.place.shared.PlaceTokenizer;
 
-public class HighMaps extends BasePlace
+public class HighMapsPlace extends BasePlace
 {
     private final String paramPlace2;
 
-    public HighMaps(String paramPlace2)
+    public HighMapsPlace(String paramPlace2)
     {
         this.paramPlace2 = paramPlace2;
     }
@@ -16,18 +16,18 @@ public class HighMaps extends BasePlace
         return paramPlace2;
     }
 
-    public static class Tokenizer implements PlaceTokenizer<HighMaps>
+    public static class Tokenizer implements PlaceTokenizer<HighMapsPlace>
     {
         @Override
-        public String getToken(HighMaps place)
+        public String getToken(HighMapsPlace place)
         {
             return place.getParamPlace2();
         }
 
         @Override
-        public HighMaps getPlace(String token)
+        public HighMapsPlace getPlace(String token)
         {
-            return new HighMaps(token);
+            return new HighMapsPlace(token);
         }
     }
 

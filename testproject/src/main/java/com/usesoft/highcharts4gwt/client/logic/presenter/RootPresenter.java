@@ -4,13 +4,17 @@ import com.usesoft.highcharts4gwt.client.view.rootlayout.RootView;
 
 public class RootPresenter extends BasePresenter<RootView> implements RootView.Presenter
 {
+
     @Override
-    void onStart()
+    protected void onStart()
     {
+        
     }
 
     @Override
-    void onStop()
+    protected void onDispose()
     {
+        
     }
+
 }

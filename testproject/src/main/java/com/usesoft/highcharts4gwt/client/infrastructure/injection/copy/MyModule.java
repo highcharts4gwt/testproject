@@ -7,13 +7,17 @@ import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
-import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighchartsFactory;
 import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighcharts;
+import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighchartsFactory;
 import com.usesoft.highcharts4gwt.client.logic.activity.NorthSingletonActivity;
 import com.usesoft.highcharts4gwt.client.logic.activity.WestActivityHighcharts;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.AppPlaceHistoryMapper;
-import com.usesoft.highcharts4gwt.client.logic.activitymapper.PlaceControllerHolder;
+import com.usesoft.highcharts4gwt.client.logic.activitymapper.center.CenterActivityMapper;
+import com.usesoft.highcharts4gwt.client.logic.activitymapper.east.EastActivityMapper;
+import com.usesoft.highcharts4gwt.client.logic.activitymapper.north.NorthActivityMapper;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.north.NorthPlaceToActivityVisitor;
+import com.usesoft.highcharts4gwt.client.logic.activitymapper.south.SouthActivityMapper;
+import com.usesoft.highcharts4gwt.client.logic.activitymapper.west.WestActivityMapper;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.west.WestPlaceToActivityVisitor;
 import com.usesoft.highcharts4gwt.client.logic.presenter.RootPresenter;
 import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
@@ -42,9 +46,15 @@ public class MyModule extends AbstractGinModule
 
         // Presenters
         bind(RootView.Presenter.class).to(RootPresenter.class).in(Singleton.class);
+        
+        bind(NorthActivityMapper.class).in(Singleton.class);
+        bind(SouthActivityMapper.class).in(Singleton.class);
+        bind(EastActivityMapper.class).in(Singleton.class);
+        bind(WestActivityMapper.class).in(Singleton.class);
+        bind(CenterActivityMapper.class).in(Singleton.class);
 
         bind(AppPlaceHistoryMapper.class);
-        bind(PlaceControllerHolder.class).in(Singleton.class);
+        bind(ApplicationContext.class).to(ApplicationContextImpl.class).in(Singleton.class);
         bind(EventBus.class).to(SimpleEventBus.class);
 
         bind(NorthPlaceToActivityVisitor.class);

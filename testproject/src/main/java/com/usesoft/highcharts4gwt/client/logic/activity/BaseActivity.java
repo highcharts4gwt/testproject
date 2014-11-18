@@ -1,19 +1,12 @@
 package com.usesoft.highcharts4gwt.client.logic.activity;
 
-import javax.inject.Inject;
-
 import com.google.gwt.activity.shared.Activity;
-import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
 import com.google.gwt.user.client.ui.IsWidget;
+import com.usesoft.highcharts4gwt.client.logic.presenter.BasePresenter;
 
-public abstract class BaseActivity<T extends IsWidget> implements Activity
+public abstract class BaseActivity<T extends IsWidget> extends BasePresenter<T> implements Activity
 {
-    @Inject
-    T view;
-
-    private EventBus eventBus;
-
     @Override
     public String mayStop()
     {
@@ -24,22 +17,26 @@ public abstract class BaseActivity<T extends IsWidget> implements Activity
     public void onCancel()
     {
     }
-
-    public T getView(){
-        return view;
-    }
-
+    
     @Override
-    public void start(AcceptsOneWidget panel, EventBus eventBus)
+    public void onStop()
     {
-        this.eventBus = eventBus;
-        onStart(panel);
+        dispose();
     }
 
-    public abstract void onStart(AcceptsOneWidget panel);
-
-    public EventBus getEventBus()
+    /*
+     * Adapter between the old EventBus and the new one
+     */
+    @Override
+    @Deprecated
+    public void start(AcceptsOneWidget panel, com.google.gwt.event.shared.EventBus eventBus)
     {
-        return eventBus;
+       start(panel, ((com.google.web.bindery.event.shared.EventBus) eventBus));
+    }
+    
+    protected final void start(AcceptsOneWidget containerWidget, com.google.web.bindery.event.shared.EventBus eventBus)
+    {
+       containerWidget.setWidget(getView());
+       start(eventBus);
     }
 }

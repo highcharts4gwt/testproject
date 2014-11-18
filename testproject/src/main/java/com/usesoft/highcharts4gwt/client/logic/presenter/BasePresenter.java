@@ -6,7 +6,7 @@ import com.google.web.bindery.event.shared.EventBus;
 
 public abstract class BasePresenter<T> implements Presenter<T>
 {
-    private EventBus eventBus;
+    protected EventBus eventBus;
 
     @Inject
     T view;
@@ -18,19 +18,26 @@ public abstract class BasePresenter<T> implements Presenter<T>
         onStart();
     }
 
-    @Override
-    public final void stop()
-    {
-        onStop();
-    }
+    /**
+     * Empty. To be implemented by presenters to do their initialization.
+     */
+    protected abstract void onStart();
 
-    abstract void onStart();
+    /**
+     * Empty. To be implemented by presenters to clean up stuff (dispose of sub-presenters, etc.) before closing.
+     */
+    protected abstract void onDispose();
 
-    abstract void onStop();
 
     protected EventBus getEventBus()
     {
         return eventBus;
+    }
+    
+    @Override
+    public void dispose()
+    {
+        onDispose();
     }
 
     @Override

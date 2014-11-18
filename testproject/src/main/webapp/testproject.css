@@ -32,3 +32,9 @@ h1 {
 #closeButton {
   margin: 15px 6px 6px;
 }
+
+.link {
+	color: #00c;
+    cursor: pointer;
+    text-decoration: underline;
+}
