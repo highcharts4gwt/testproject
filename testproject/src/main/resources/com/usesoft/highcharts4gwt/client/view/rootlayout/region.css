@@ -1,5 +1,5 @@
 .northRegion {
-	background-color:gray;
+	background-color:#252530;
 }
 
 .southRegion {
@@ -11,7 +11,8 @@
 }
 
 .westRegion {
-	background-color:white;
+	background-color:#252530;
+	color: white;
 }
 
 .centerRegion {

@@ -4,6 +4,7 @@ import javax.inject.Inject;
 
 import com.usesoft.highcharts4gwt.client.infrastructure.injection.copy.ApplicationContext;
 import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
+import com.usesoft.highcharts4gwt.client.logic.model.highcharts.ChartCategory;
 import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
 import com.usesoft.highcharts4gwt.client.view.west.WestViewHighcharts;
 
@@ -27,10 +28,16 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
     {
         getView().setPresenter(this);
         
-        for (Chart chart : Chart.values())
+        for (ChartCategory category : ChartCategory.values())
         {
-            getView().addLink(chart);
+            getView().addCategory(category);
+            for (Chart chart : Chart.values())
+            {
+                if (chart.getCategory() == category)
+                    getView().addLink(chart);
+            }
         }
+       
     }
 
     @Override

@@ -4,13 +4,13 @@
 	xmlns:m="urn:import:com.usesoft.highcharts4gwt.client.view.region">
 	<ui:style src="region.css" />
 	<g:DockLayoutPanel unit='EM' ui:field="rootContainer">
-	    <g:north size='2'>
+	    <g:north size='4'>
 	    	<m:RegionContainer ui:field="northRegionContainer" styleName="{style.northRegion}"></m:RegionContainer>
 	    </g:north>
 	    <g:south size='2'>
 	    	<m:RegionContainer ui:field="southRegionContainer" styleName="{style.southRegion}"></m:RegionContainer>
 	    </g:south>
-	    <g:west size='8'>
+	    <g:west size='16'>
 	    	<m:RegionContainer ui:field="westRegionContainer" styleName="{style.westRegion}"></m:RegionContainer>
 	    </g:west>
 	    <g:east size='6'>

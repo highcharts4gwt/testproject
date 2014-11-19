@@ -26,6 +26,7 @@ import com.usesoft.highcharts4gwt.client.view.north.HeaderView;
 import com.usesoft.highcharts4gwt.client.view.north.HeaderViewImpl;
 import com.usesoft.highcharts4gwt.client.view.region.RegionContainer;
 import com.usesoft.highcharts4gwt.client.view.region.SimpleLayoutPanelRegionContainer;
+import com.usesoft.highcharts4gwt.client.view.resources.MyResources;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootView;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootViewImpl;
 import com.usesoft.highcharts4gwt.client.view.west.WestViewHighcharts;
@@ -36,6 +37,8 @@ public class MyModule extends AbstractGinModule
     @Override
     protected void configure()
     {
+        bind(MyResources.class).in(Singleton.class);
+        
         // Views
         bind(RootView.class).to(RootViewImpl.class).in(Singleton.class);
         bind(RegionContainer.class).to(SimpleLayoutPanelRegionContainer.class);
@@ -43,6 +46,7 @@ public class MyModule extends AbstractGinModule
         bind(WestViewHighcharts.class).to(WestViewHighchartsImpl.class);
         bind(HeaderView.class).to(HeaderViewImpl.class);
         bind(CenterViewHighcharts.class).to(CenterViewHighchartsImpl.class);
+        
 
         // Presenters
         bind(RootView.Presenter.class).to(RootPresenter.class).in(Singleton.class);
