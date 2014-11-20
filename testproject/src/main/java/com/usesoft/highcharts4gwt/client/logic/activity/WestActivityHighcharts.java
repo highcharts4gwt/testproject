@@ -1,5 +1,8 @@
 package com.usesoft.highcharts4gwt.client.logic.activity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 
 import com.usesoft.highcharts4gwt.client.infrastructure.injection.copy.ApplicationContext;
@@ -30,14 +33,20 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
         
         for (ChartCategory category : ChartCategory.values())
         {
-            getView().addCategory(category);
+            List<Chart> linksToAdd  = new ArrayList<>();
             for (Chart chart : Chart.values())
             {
                 if (chart.getCategory() == category)
-                    getView().addLink(chart);
+                    linksToAdd.add(chart);
+            }
+            
+            if (linksToAdd.size()>0)
+                getView().addCategory(category);
+            for (Chart chart : linksToAdd)
+            {
+                getView().addLink(chart);
             }
         }
-       
     }
 
     @Override

@@ -7,4 +7,6 @@ public interface ChartVisitor<IN, OUT>
     OUT visitChart1 (IN in);
     
     OUT visitChart2 (IN in);
+    
+    OUT visitBasicLine (IN in);
 }

@@ -2,32 +2,39 @@ package com.usesoft.highcharts4gwt.client.logic.model.highcharts;
 
 public enum ChartCategory
 {
-    Column {
+    Line {
         @Override
         public String getCategoryDescription()
         {
-            return "Column charts";
+            return "LINE CHARTS";
         }
     },
-    Bar {
+    ColumnAndBar {
         @Override
         public String getCategoryDescription()
         {
-            return "Bar charts";
+            return "COLUMN AND BAR CHARTS";
         }
     },
     Chart3D {
         @Override
         public String getCategoryDescription()
         {
-            return "3D charts";
+            return "3D CHARTS";
         }
     },
-    MultipleAxes {
+    Combinations {
         @Override
         public String getCategoryDescription()
         {
-            return "Charts with multiple axes";
+            return "COMBINATIONS";
+        }
+    },
+    Debug {
+        @Override
+        public String getCategoryDescription()
+        {
+            return "DEBUG";
         }
     };
     

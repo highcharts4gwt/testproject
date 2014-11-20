@@ -28,6 +28,32 @@ public enum Chart
             return "Column 3D chart";
         }
     },
+    BasicLine
+    {
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitBasicLine(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Line;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Basic line";
+        }
+    },
     Chart1
     {
         @Override
@@ -45,7 +71,7 @@ public enum Chart
         @Override
         public ChartCategory getCategory()
         {
-            return ChartCategory.Column;
+            return ChartCategory.ColumnAndBar;
         }
 
         @Override
@@ -71,7 +97,7 @@ public enum Chart
         @Override
         public ChartCategory getCategory()
         {
-            return ChartCategory.Bar;
+            return ChartCategory.ColumnAndBar;
         }
 
         @Override
