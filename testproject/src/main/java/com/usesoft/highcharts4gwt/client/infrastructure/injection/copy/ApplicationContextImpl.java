@@ -32,7 +32,6 @@ public class ApplicationContextImpl implements ApplicationContext
         this.defaultBus = eventBus;
         historyHandler = new PlaceHistoryHandler(phMapper);
         placeController = new PlaceController(eventBus);
-
         historyHandler.register(placeController, defaultBus, defaultPlace);
 
         rootPresenter.start(eventBus);

@@ -5,6 +5,7 @@ import javax.inject.Singleton;
 import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
+import com.google.gwt.place.shared.PlaceHistoryMapper;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighcharts;
@@ -57,7 +58,8 @@ public class MyModule extends AbstractGinModule
         bind(WestActivityMapper.class).in(Singleton.class);
         bind(CenterActivityMapper.class).in(Singleton.class);
 
-        bind(AppPlaceHistoryMapper.class);
+        bind(PlaceHistoryMapper.class).to(AppPlaceHistoryMapper.class);
+        //bind(AppPlaceHistoryMapper.class);
         bind(ApplicationContext.class).to(ApplicationContextImpl.class).in(Singleton.class);
         bind(EventBus.class).to(SimpleEventBus.class);
 

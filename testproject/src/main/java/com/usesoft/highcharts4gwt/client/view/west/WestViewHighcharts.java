@@ -1,8 +1,8 @@
 package com.usesoft.highcharts4gwt.client.view.west;
 
 import com.google.gwt.user.client.ui.IsWidget;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.ChartCategory;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
+import com.usesoft.highcharts4gwt.client.model.highcharts.ChartCategory;
 
 public interface WestViewHighcharts extends IsWidget
 {

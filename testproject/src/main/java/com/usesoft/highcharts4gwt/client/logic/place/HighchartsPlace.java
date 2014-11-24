@@ -1,7 +1,7 @@
 package com.usesoft.highcharts4gwt.client.logic.place;
 
 import com.google.gwt.place.shared.PlaceTokenizer;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 
 public class HighchartsPlace extends BasePlace
 {
@@ -9,7 +9,7 @@ public class HighchartsPlace extends BasePlace
     
     public HighchartsPlace()
     {
-       this(Chart.Chart3D.getUrlId());
+       this(Chart.Chart3DColumn.getUrlId());
     }
     
     public HighchartsPlace(String chartName)

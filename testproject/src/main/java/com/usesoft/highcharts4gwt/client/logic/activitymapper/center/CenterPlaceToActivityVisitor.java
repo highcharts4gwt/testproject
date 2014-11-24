@@ -5,10 +5,10 @@ import javax.inject.Inject;
 
 import com.google.gwt.activity.shared.Activity;
 import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighchartsFactory;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
 import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
 import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
 import com.usesoft.highcharts4gwt.client.logic.place.PlaceVisitor;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 
 public class CenterPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
 {

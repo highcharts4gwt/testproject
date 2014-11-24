@@ -7,8 +7,8 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.FocusPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.ChartCategory;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
+import com.usesoft.highcharts4gwt.client.model.highcharts.ChartCategory;
 import com.usesoft.highcharts4gwt.client.view.resources.MyResources;
 
 public class WestViewHighchartsImpl extends VerticalPanel implements WestViewHighcharts

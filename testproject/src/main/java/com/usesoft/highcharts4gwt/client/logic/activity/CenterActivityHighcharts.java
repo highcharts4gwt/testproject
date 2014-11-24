@@ -3,8 +3,8 @@ package com.usesoft.highcharts4gwt.client.logic.activity;
 import javax.inject.Inject;
 
 import com.google.inject.assistedinject.Assisted;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.Chart;
-import com.usesoft.highcharts4gwt.client.logic.model.highcharts.ChartOptionsVisitor;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
+import com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor;
 import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
 
 public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts> implements CenterViewHighcharts.Presenter

@@ -1,8 +1,8 @@
-package com.usesoft.highcharts4gwt.client.logic.model.highcharts;
+package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 public enum Chart
 {
-    Chart3D
+    Chart3DColumn
     {
         @Override
         public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
@@ -19,13 +19,13 @@ public enum Chart
         @Override
         public ChartCategory getCategory()
         {
-            return ChartCategory.Chart3D;
+            return ChartCategory.Chart3DColumn;
         }
 
         @Override
         public String getLinkText()
         {
-            return "Column 3D chart";
+            return "3D Column";
         }
     },
     BasicLine
@@ -54,12 +54,12 @@ public enum Chart
             return "Basic line";
         }
     },
-    Chart1
+    BasicArea
     {
         @Override
         public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
         {
-            return visitor.visitChart1(in);
+            return visitor.visitBasicArea(in);
         }
 
         @Override
@@ -71,21 +71,21 @@ public enum Chart
         @Override
         public ChartCategory getCategory()
         {
-            return ChartCategory.ColumnAndBar;
+            return ChartCategory.Area;
         }
 
         @Override
         public String getLinkText()
         {
-            return "Chart with column";
+            return "Basic area";
         }
     },
-    Chart2
+    BasicBar
     {
         @Override
         public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
         {
-            return visitor.visitChart2(in);
+            return visitor.visitBasicBar(in);
         }
 
         @Override
@@ -103,9 +103,36 @@ public enum Chart
         @Override
         public String getLinkText()
         {
-            return "Chart with bar";
+            return "Basic bar";
+        }
+    },
+    SolidGauge
+    {
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitSolidGauge(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Gauges;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Solid gauge";
         }
     };
+   
 
     public abstract <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in);
 
