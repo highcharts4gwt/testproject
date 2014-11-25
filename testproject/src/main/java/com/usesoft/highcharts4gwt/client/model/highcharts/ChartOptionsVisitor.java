@@ -1,10 +1,12 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.usesoft.highcharts4gwt.model.array.api.Array;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
+import com.usesoft.highcharts4gwt.model.highcharts.api.series.Data;
 import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
@@ -27,7 +29,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         Series series = (Series) JavaScriptObject.createObject();
 
-        ArrayNumber data = series.data();
+        ArrayNumber data = series.dataAsArrayNumber();
         data.push(29.9);
         data.push(71.5);
         data.push(106.4);
@@ -78,7 +80,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.legend().layout("vertical").align("right").verticalAlign("middle").borderWidth(0);
 
         Series series1 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data = series1.data();
+        ArrayNumber data = series1.dataAsArrayNumber();
         data.push(7.0);
         data.push(6.9);
         data.push(9.5);
@@ -94,7 +96,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series1.name("Tokyo");
 
         Series series2 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data2 = series2.data();
+        ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(-0.2);
         data2.push(0.8);
         data2.push(5.7);
@@ -110,7 +112,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series2.name("New York");
 
         Series series3 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data3 = series3.data();
+        ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(-0.9);
         data3.push(0.6);
         data3.push(3.5);
@@ -126,7 +128,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series3.name("Berlin");
 
         Series series4 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data4 = series4.data();
+        ArrayNumber data4 = series4.dataAsArrayNumber();
         data4.push(3.9);
         data4.push(4.2);
         data4.push(5.7);
@@ -171,7 +173,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         Series series1 = (Series) JavaScriptObject.createObject();
         
         //TODO replace 0 by null ...
-        ArrayNumber data = series1.data();
+        ArrayNumber data = series1.dataAsArrayNumber();
         data.insert(0, 0);
         data.insert(1, 0);
         data.insert(2, 0);
@@ -244,7 +246,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series1.name("USA");
 
         Series series2 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data2 = series2.data();
+        ArrayNumber data2 = series2.dataAsArrayNumber();
         
         //TODO replace 0 by null ...
         data2.insert(0, 0);
@@ -353,7 +355,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.credits().enabled(false);
         
         Series series1 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data1 = series1.data();
+        ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(107);
         data1.push(31);
         data1.push(635);
@@ -362,7 +364,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series1.name("Year 1800");
         
         Series series2 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data2 = series2.data();
+        ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(133);
         data2.push(156);
         data2.push(947);
@@ -371,7 +373,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series2.name("Year 1900");
         
         Series series3 = (Series) JavaScriptObject.createObject();
-        ArrayNumber data3 = series3.data();
+        ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(973);
         data3.push(914);
         data3.push(4054);
@@ -395,7 +397,10 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.title(null);
         
-        //TODO add center ?
+        ArrayString center = options.pane().centerAsArrayString();
+        center.push("50%");
+        center.push("85%");
+        
         options.pane().sizeAsString("100%").startAngle(-90).endAngle(90).background("{"+
                         "\"backgroundColor\": \"#EEE\","+
                         "\"innerRadius\": \"60%\","+
@@ -412,7 +417,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         // TODO minorTickInterval double to null ? how to do that ?
         
-        // TODO add  options.plotOptions().solidgauge().dataLabels().borderWidth 
+        options.plotOptions().solidgauge().dataLabels().borderWidth(0);
         options.plotOptions().solidgauge().dataLabels().y(5).useHTML(true);
         
         options.yAxis().min(0).max(200).title().text("Speed");
@@ -420,14 +425,14 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.credits().enabled(false);
         
         Series series = (Series) JavaScriptObject.createObject();
-        ArrayNumber data = series.data();
-        data.push(80);
+        Array<Data> dataList = series.dataAsArrayObject();
+        Data data = (Data) JavaScriptObject.createObject();
+        data.y(80);
+        dataList.addToEnd(data);
         series.name("Speed");
         
+        // TODO add  series.datalabels and series.tooltips does not exist in options, contact highcharts
         options.series().addToEnd(series);
-        
-        // TODO add  series.data.datalabels
-        // TODO add  series.data.tooltip
 
         return options;
     }
