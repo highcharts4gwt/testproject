@@ -1,11 +1,14 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayString;
 import com.usesoft.highcharts4gwt.model.array.api.Array;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
+import com.usesoft.highcharts4gwt.model.highcharts.api.labels.Item;
 import com.usesoft.highcharts4gwt.model.highcharts.api.series.Data;
 import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
 
@@ -171,8 +174,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.plotOptions().area().pointStart(1940).marker().enabled(false).symbol("circle").radius(2).states().hover().enabled(true);
 
         Series series1 = (Series) JavaScriptObject.createObject();
-        
-        //TODO replace 0 by null ...
+
+        // TODO replace 0 by null ...
         ArrayNumber data = series1.dataAsArrayNumber();
         data.insert(0, 0);
         data.insert(1, 0);
@@ -247,8 +250,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         Series series2 = (Series) JavaScriptObject.createObject();
         ArrayNumber data2 = series2.dataAsArrayNumber();
-        
-        //TODO replace 0 by null ...
+
+        // TODO replace 0 by null ...
         data2.insert(0, 0);
         data2.insert(1, 0);
         data2.insert(2, 0);
@@ -259,7 +262,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.insert(7, 0);
         data2.insert(8, 0);
         data2.insert(9, 0);
-        
+
         int j = 9;
         data2.insert(++j, 5);
         data2.insert(++j, 25);
@@ -318,9 +321,9 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.insert(++j, 18000);
         data2.insert(++j, 17000);
         data2.insert(++j, 16000);
-        
+
         series2.name("USSR/Russia");
-        
+
         options.series().addToEnd(series1);
         options.series().addToEnd(series2);
         return options;
@@ -334,7 +337,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.chart().type("bar");
         options.title().text("Historic World Population by Region");
         options.subtitle().text("Source: Wikipedia.org");
-        
+
         ArrayString categories = options.xAxis().categories();
         categories.push("Africa");
         categories.push("America");
@@ -342,18 +345,19 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         categories.push("Oceania");
 
         options.xAxis().title().text(null);
-        
+
         options.yAxis().min(0).title().text("Population (millions)").align("high");
         options.yAxis().labels().overflow("justify");
-        
+
         options.tooltip().valueSuffix(" millions");
-        
+
         options.plotOptions().bar().dataLabels().enabled(true);
-        
-        options.legend().layout("vertical").align("right").verticalAlign("top").x(-40).y(100).floating(true).borderWidth(1).backgroundColor("#FFFFFF").shadowAsBoolean(true);
-        
+
+        options.legend().layout("vertical").align("right").verticalAlign("top").x(-40).y(100).floating(true).borderWidth(1).backgroundColor("#FFFFFF")
+                        .shadowAsBoolean(true);
+
         options.credits().enabled(false);
-        
+
         Series series1 = (Series) JavaScriptObject.createObject();
         ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(107);
@@ -362,7 +366,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data1.push(203);
         data1.push(2);
         series1.name("Year 1800");
-        
+
         Series series2 = (Series) JavaScriptObject.createObject();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(133);
@@ -371,7 +375,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.push(408);
         data2.push(6);
         series2.name("Year 1900");
-        
+
         Series series3 = (Series) JavaScriptObject.createObject();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(973);
@@ -380,11 +384,11 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data3.push(732);
         data3.push(34);
         series3.name("Year 2008");
-        
+
         options.series().addToEnd(series1);
         options.series().addToEnd(series2);
         options.series().addToEnd(series3);
-        
+
         return options;
     }
 
@@ -392,48 +396,156 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     public ChartOptions visitSolidGauge(Void in)
     {
         ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
-        
+
         options.chart().type("solidgauge");
-        
+
         options.title(null);
-        
+
         ArrayString center = options.pane().centerAsArrayString();
         center.push("50%");
         center.push("85%");
-        
-        options.pane().sizeAsString("100%").startAngle(-90).endAngle(90).background("{"+
-                        "\"backgroundColor\": \"#EEE\","+
-                        "\"innerRadius\": \"60%\","+
-                        "\"outerRadius\": \"100%\","+
-                        "\"shape\": \"arc\""+
-                    "}");
-        
+
+        options.pane()
+                        .sizeAsString("100%")
+                        .startAngle(-90)
+                        .endAngle(90)
+                        .background("{" + "\"backgroundColor\": \"#EEE\"," + "\"innerRadius\": \"60%\"," + "\"outerRadius\": \"100%\","
+                                        + "\"shape\": \"arc\"" + "}");
+
         options.tooltip().enabled(false);
-        
+
         // TODO add stops
         // TODO title.y not documented ? contact highcharts
-        
+
         options.yAxis().lineWidth(0).tickPixelInterval(400).tickWidth(0).labels().y(16);
-        
+
         // TODO minorTickInterval double to null ? how to do that ?
-        
+
         options.plotOptions().solidgauge().dataLabels().borderWidth(0);
         options.plotOptions().solidgauge().dataLabels().y(5).useHTML(true);
-        
+
         options.yAxis().min(0).max(200).title().text("Speed");
-        
+
         options.credits().enabled(false);
-        
+
         Series series = (Series) JavaScriptObject.createObject();
         Array<Data> dataList = series.dataAsArrayObject();
         Data data = (Data) JavaScriptObject.createObject();
         data.y(80);
         dataList.addToEnd(data);
         series.name("Speed");
-        
-        // TODO add  series.datalabels and series.tooltips does not exist in options, contact highcharts
+
+        // TODO add series.datalabels and series.tooltips does not exist in options, contact highcharts
         options.series().addToEnd(series);
 
+        return options;
+    }
+
+    @Override
+    public ChartOptions visitColumnLineAndPie(Void in)
+    {
+        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+
+        options.title().text("Combination chart");
+
+        ArrayString categories = options.xAxis().categories();
+        categories.push("Apples");
+        categories.push("Oranges");
+        categories.push("Pears");
+        categories.push("Bananas");
+        categories.push("Plums");
+
+        Array<Item> items = options.labels().items();
+        Item item = (Item) JavaScriptObject.createObject();
+        item.html("Total fruit consumption").style("{" + "\"left\": \"50px\"," + "\"top\": \"18px\"," + "\"color\": \"black\"" + "}");
+        items.addToEnd(item);
+        
+        Series series1 = (Series) JavaScriptObject.createObject();
+        ArrayNumber data1 = series1.dataAsArrayNumber();
+        data1.push(3);
+        data1.push(2);
+        data1.push(1);
+        data1.push(3);
+        data1.push(4);
+        series1.name("Jane");
+        series1.type("column");
+
+        Series series2 = (Series) JavaScriptObject.createObject();
+        ArrayNumber data2 = series2.dataAsArrayNumber();
+        data2.push(2);
+        data2.push(3);
+        data2.push(5);
+        data2.push(7);
+        data2.push(6);
+        series2.name("John");
+        series2.type("column");
+
+        Series series3 = (Series) JavaScriptObject.createObject();
+        ArrayNumber data3 = series3.dataAsArrayNumber();
+        data3.push(4);
+        data3.push(3);
+        data3.push(3);
+        data3.push(9);
+        data3.push(0);
+        series3.name("Joe");
+        series3.type("column");
+        
+        Series series4 = (Series) JavaScriptObject.createObject();
+        ArrayNumber data4 = series4.dataAsArrayNumber();
+        data4.push(3);
+        data4.push(2.67);
+        data4.push(3);
+        data4.push(6.33);
+        data4.push(3.33);
+        series4.name("Average");
+        series4.type("spline");
+        
+        options.plotOptions().spline().marker().lineWidth(3).lineColor("#f7a35c").fillColor("white");
+
+        
+        Series series5 = (Series) JavaScriptObject.createObject();
+        Array<Data> dataList = series5.dataAsArrayObject();
+        
+        Data d1 = (Data) JavaScriptObject.createObject();
+        d1.y(13).name("Jane").color("#7cb5ec");
+        dataList.addToEnd(d1);
+        
+        Data d2 = (Data) JavaScriptObject.createObject();
+        d2.y(23).name("John").color("#434348");
+        dataList.addToEnd(d2);
+        
+        Data d3 = (Data) JavaScriptObject.createObject();
+        d3.y(19).name("Joe").color("#90ed7d");
+        dataList.addToEnd(d3);
+
+        series5.name("Total consumption");
+        series5.type("pie");
+        
+        ArrayString centerCoord = (ArrayString) JavaScriptObject.createObject();
+        centerCoord.push("25%");
+        centerCoord.push("25%");
+        
+        //TODO investigate this center issue, need the set method at least ! Setting an array does not seem to work
+//        options.plotOptions().pie().center(centerCoord);
+        ArrayString center = options.plotOptions().pie().center();
+        ((JsArrayString) center).set(0,"10%");
+        ((JsArrayString) center).set(1,"20%");
+        //int length = center.length();
+//        String v1 = center.get(0);
+//        String v2 = center.get(1);
+        
+        
+        
+        options.plotOptions().pie().sizeAsNumber(100).showInLegend(false).dataLabels().enabled(false);
+
+        options.series().addToEnd(series1);
+        options.series().addToEnd(series2);
+        options.series().addToEnd(series3);
+        options.series().addToEnd(series4);
+        options.series().addToEnd(series5);
+        
+        
+        
         return options;
     }
 

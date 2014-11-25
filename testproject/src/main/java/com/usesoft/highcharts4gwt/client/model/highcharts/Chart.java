@@ -131,6 +131,31 @@ public enum Chart
         {
             return "Solid gauge";
         }
+    },
+    ColumnLineAndPie {
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitColumnLineAndPie(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Combinations;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Column, line and pie";
+        }
     };
    
 
