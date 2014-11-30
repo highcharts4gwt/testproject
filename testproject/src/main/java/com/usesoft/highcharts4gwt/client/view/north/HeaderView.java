@@ -11,5 +11,7 @@ public interface HeaderView extends IsWidget
         void navigateToHighcharts();
 
         void navigateToHighMaps();
+
+        void navigateGithub();
     }
 }

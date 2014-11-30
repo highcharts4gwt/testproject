@@ -9,7 +9,10 @@ public interface CenterViewHighcharts extends IsWidget
     
     void renderChart(ChartOptions options);
     
+    void addCode(String code);
+
     public interface Presenter
     {
     }
+
 }

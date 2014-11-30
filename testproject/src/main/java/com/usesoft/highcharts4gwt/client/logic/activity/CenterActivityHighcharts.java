@@ -5,12 +5,18 @@ import javax.inject.Inject;
 import com.google.inject.assistedinject.Assisted;
 import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 import com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor;
+import com.usesoft.highcharts4gwt.client.model.highcharts.ChartCodeVisitor;
 import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
 
 public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts> implements CenterViewHighcharts.Presenter
 {
     @Inject
     ChartOptionsVisitor chartOptions;
+    
+    @Inject
+    ChartCodeVisitor chartCode;
+    
+    
     private Chart chart;
 
     @Inject
@@ -23,6 +29,7 @@ public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts>
     protected void onStart()
     {
         getView().setPresenter(this);
+        getView().addCode(chart.accept(chartCode, null));
         getView().renderChart(chart.accept(chartOptions, null));
     }
 
