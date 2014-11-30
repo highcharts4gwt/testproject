@@ -429,7 +429,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         Data data = (Data) JavaScriptObject.createObject();
         data.name("Speed");
         data.y(80);
-        data.dataLabels("{\r\n    \"format\": \"<divstyle=\\\"text-align: center\\\"><spanstyle=\\\"font-size: 25px;color: black\\\">{y}</span><br/><spanstyle=\\\"font-size: 12px;color: silver\\\">km/h</span></div>\"\r\n}");
+        data.dataLabels("{\r\n    \"format\": \"<divstyle=\\\"text-align: center\\\"><span style=\\\"font-size: 25px;color: black\\\">{y}</span><br/><span style=\\\"font-size: 12px;color: silver\\\">km/h</span></div>\"\r\n}");
         dataList.addToEnd(data);
 
 
