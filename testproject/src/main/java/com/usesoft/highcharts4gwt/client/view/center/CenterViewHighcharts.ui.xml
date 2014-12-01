@@ -4,5 +4,16 @@
 	xmlns:m="urn:import:com.usesoft.highcharts4gwt.client.view.region"
 	xmlns:h4g="urn:import:com.usesoft.highcharts4gwt.client.view.widget"
 	>
-	<h4g:HighchartsLayoutPanel ui:field="chartPanel"></h4g:HighchartsLayoutPanel>
+	
+	
+	<g:TabLayoutPanel barUnit='EM' barHeight='3'>
+		<g:tab>
+			<g:header>Chart</g:header>
+			<h4g:HighchartsLayoutPanel ui:field="chartPanel"></h4g:HighchartsLayoutPanel>
+		</g:tab>
+		<g:tab>
+			<g:header>Code</g:header>
+			<g:SimpleLayoutPanel ui:field="codePanel"></g:SimpleLayoutPanel>
+		</g:tab>
+	</g:TabLayoutPanel>
 </ui:UiBinder> 

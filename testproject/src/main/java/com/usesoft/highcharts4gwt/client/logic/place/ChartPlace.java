@@ -1,18 +1,12 @@
 package com.usesoft.highcharts4gwt.client.logic.place;
 
 import com.google.gwt.place.shared.PlaceTokenizer;
-import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 
-public class HighchartsPlace extends BasePlace
+public class ChartPlace extends BasePlace
 {
     private final String chartName;
     
-    public HighchartsPlace()
-    {
-       this(Chart.Chart3DColumn.getUrlId());
-    }
-    
-    public HighchartsPlace(String chartName)
+    public ChartPlace(String chartName)
     {
         this.chartName = chartName;
     }
@@ -22,15 +16,15 @@ public class HighchartsPlace extends BasePlace
         return chartName;
     }
 
-    public static class Tokenizer implements PlaceTokenizer<HighchartsPlace> {
+    public static class Tokenizer implements PlaceTokenizer<ChartPlace> {
         @Override
-        public String getToken(HighchartsPlace place) {
+        public String getToken(ChartPlace place) {
             return place.getChartName();
         }
 
         @Override
-        public HighchartsPlace getPlace(String token) {
-            return new HighchartsPlace(token);
+        public ChartPlace getPlace(String token) {
+            return new ChartPlace(token);
         }
     }
 

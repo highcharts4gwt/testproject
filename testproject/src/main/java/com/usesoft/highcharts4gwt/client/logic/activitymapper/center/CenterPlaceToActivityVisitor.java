@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import com.google.gwt.activity.shared.Activity;
 import com.usesoft.highcharts4gwt.client.logic.activity.CenterActivityHighchartsFactory;
 import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
-import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.ChartPlace;
 import com.usesoft.highcharts4gwt.client.logic.place.PlaceVisitor;
 import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 
@@ -16,7 +16,7 @@ public class CenterPlaceToActivityVisitor implements PlaceVisitor<Void, Activity
     CenterActivityHighchartsFactory factory;
     
     @Override
-    public Activity visit(HighchartsPlace place1, Void in)
+    public Activity visit(ChartPlace place1, Void in)
     {
         String chartName = place1.getChartName();
         

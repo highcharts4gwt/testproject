@@ -13,7 +13,8 @@ import com.usesoft.highcharts4gwt.client.logic.activitymapper.east.EastActivityM
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.north.NorthActivityMapper;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.south.SouthActivityMapper;
 import com.usesoft.highcharts4gwt.client.logic.activitymapper.west.WestActivityMapper;
-import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.ChartPlace;
+import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 import com.usesoft.highcharts4gwt.client.view.region.Region;
 import com.usesoft.highcharts4gwt.client.view.rootlayout.RootView;
 
@@ -25,19 +26,21 @@ public class ApplicationContextImpl implements ApplicationContext
     private final EventBus defaultBus;
 
     @Inject
-    public ApplicationContextImpl(EventBus eventBus, PlaceHistoryMapper phMapper, HighchartsPlace defaultPlace, RootView.Presenter rootPresenter,
-                    NorthActivityMapper northActivityMapper, EastActivityMapper eastActivityMapper, WestActivityMapper westActivityMapper,
-                    CenterActivityMapper centerActivityMapper, SouthActivityMapper southActivityMapper)
+    public ApplicationContextImpl(EventBus eventBus, PlaceHistoryMapper phMapper, RootView.Presenter rootPresenter, NorthActivityMapper northActivityMapper,
+            EastActivityMapper eastActivityMapper, WestActivityMapper westActivityMapper, CenterActivityMapper centerActivityMapper,
+            SouthActivityMapper southActivityMapper)
     {
         this.defaultBus = eventBus;
         historyHandler = new PlaceHistoryHandler(phMapper);
         placeController = new PlaceController(eventBus);
-        historyHandler.register(placeController, defaultBus, defaultPlace);
+        historyHandler.register(placeController, defaultBus, new ChartPlace(Chart.ColumnLineAndPie.getUrlId()));
 
         rootPresenter.start(eventBus);
 
-        // @rqu this must be called after root presenter starts -> creates the regions
-        // Cannot inject appContext inside ActivityProviders because they are created here -> infinite loop creating appContex.
+        // @rqu this must be called after root presenter starts -> creates the
+        // regions
+        // Cannot inject appContext inside ActivityProviders because they are
+        // created here -> infinite loop creating appContex.
         initializeManagers(rootPresenter, defaultBus, northActivityMapper, eastActivityMapper, westActivityMapper, centerActivityMapper, southActivityMapper);
 
         RootLayoutPanel.get().add(rootPresenter.getView().asWidget());
@@ -55,13 +58,9 @@ public class ApplicationContextImpl implements ApplicationContext
         return historyHandler;
     }
 
-    private void initializeManagers(RootView.Presenter rootPresenter,
-                    EventBus eventBus,
-                    NorthActivityMapper northActivityMapper,
-                    EastActivityMapper eastActivityMapper,
-                    WestActivityMapper westActivityMapper,
-                    CenterActivityMapper centerActivityMapper,
-                    SouthActivityMapper southActivityMapper)
+    private void initializeManagers(RootView.Presenter rootPresenter, EventBus eventBus, NorthActivityMapper northActivityMapper,
+            EastActivityMapper eastActivityMapper, WestActivityMapper westActivityMapper, CenterActivityMapper centerActivityMapper,
+            SouthActivityMapper southActivityMapper)
     {
         // Initialize a manager per region
         ActivityManager northActivityManager = new ActivityManager(northActivityMapper, eventBus);

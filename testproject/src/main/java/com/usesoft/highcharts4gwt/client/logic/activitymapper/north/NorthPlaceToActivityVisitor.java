@@ -7,7 +7,7 @@ import javax.inject.Provider;
 import com.google.gwt.activity.shared.Activity;
 import com.usesoft.highcharts4gwt.client.logic.activity.NorthSingletonActivity;
 import com.usesoft.highcharts4gwt.client.logic.place.HighMapsPlace;
-import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.ChartPlace;
 import com.usesoft.highcharts4gwt.client.logic.place.PlaceVisitor;
 
 public class NorthPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
@@ -16,7 +16,7 @@ public class NorthPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
     Provider<NorthSingletonActivity> provider;
 
     @Override
-    public Activity visit(HighchartsPlace place, Void in)
+    public Activity visit(ChartPlace place, Void in)
     {
         return provider.get();
     }

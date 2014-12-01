@@ -6,7 +6,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import com.usesoft.highcharts4gwt.client.infrastructure.injection.copy.ApplicationContext;
-import com.usesoft.highcharts4gwt.client.logic.place.HighchartsPlace;
+import com.usesoft.highcharts4gwt.client.logic.place.ChartPlace;
 import com.usesoft.highcharts4gwt.client.model.highcharts.Chart;
 import com.usesoft.highcharts4gwt.client.model.highcharts.ChartCategory;
 import com.usesoft.highcharts4gwt.client.view.west.WestViewHighcharts;
@@ -58,7 +58,7 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
     @Override
     public void navigateTo(Chart chart)
     {
-        applicationContext.getPlaceController().goTo(new HighchartsPlace(chart.getUrlId()));
+        applicationContext.getPlaceController().goTo(new ChartPlace(chart.getUrlId()));
     }
 
 }

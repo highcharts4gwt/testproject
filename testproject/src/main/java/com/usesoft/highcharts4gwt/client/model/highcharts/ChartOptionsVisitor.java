@@ -404,24 +404,20 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         center.push("50%");
         center.push("85%");
 
-        options.pane()
-                        .sizeAsString("100%")
-                        .startAngle(-90)
-                        .endAngle(90)
-                        .background("{" + "\"backgroundColor\": \"#EEE\"," + "\"innerRadius\": \"60%\"," + "\"outerRadius\": \"100%\","
-                                        + "\"shape\": \"arc\"" + "}");
+        options.pane().sizeAsString("100%").startAngle(-90).endAngle(90)
+                .background("{" + "\"backgroundColor\": \"#EEE\"," + "\"innerRadius\": \"60%\"," + "\"outerRadius\": \"100%\","
+                                + "\"shape\": \"arc\"" + "}");
 
         options.tooltip().enabled(false);
 
         // TODO add stops
-        // TODO title.y not documented ? contact highcharts
+        // TODO options.yAxis.title.y not documented ? contact highcharts
 
         options.yAxis().lineWidth(0).tickPixelInterval(400).tickWidth(0).labels().y(16);
 
         // TODO minorTickInterval double to null ? how to do that ?
 
-        options.plotOptions().solidgauge().dataLabels().borderWidth(0);
-        options.plotOptions().solidgauge().dataLabels().y(5).useHTML(true);
+        options.plotOptions().solidgauge().dataLabels().borderWidth(0).y(5).useHTML(true);
 
         options.yAxis().min(0).max(200).title().text("Speed");
 
@@ -429,12 +425,16 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         Series series = (Series) JavaScriptObject.createObject();
         Array<Data> dataList = series.dataAsArrayObject();
-        Data data = (Data) JavaScriptObject.createObject();
-        data.y(80);
-        dataList.addToEnd(data);
-        series.name("Speed");
 
-        // TODO add series.datalabels and series.tooltips does not exist in options, contact highcharts
+        Data data = (Data) JavaScriptObject.createObject();
+        data.name("Speed");
+        data.y(80);
+        data.dataLabels("{\r\n    \"format\": \"<divstyle=\\\"text-align: center\\\"><span style=\\\"font-size: 25px;color: black\\\">{y}</span><br/><span style=\\\"font-size: 12px;color: silver\\\">km/h</span></div>\"\r\n}");
+        dataList.addToEnd(data);
+
+
+        options.plotOptions().series().tooltip().valueSuffix(" km/h");
+        
         options.series().addToEnd(series);
 
         return options;

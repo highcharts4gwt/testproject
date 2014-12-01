@@ -1,5 +1,10 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
+import javax.inject.Inject;
+
+import com.google.inject.Provider;
+import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
+
 public enum Chart
 {
     Chart3DColumn
@@ -157,8 +162,7 @@ public enum Chart
             return "Column, line and pie";
         }
     };
-   
-
+    
     public abstract <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in);
 
     public abstract String getUrlId();
@@ -166,4 +170,5 @@ public enum Chart
     public abstract ChartCategory getCategory();
     
     public abstract String getLinkText();
+    
 }
