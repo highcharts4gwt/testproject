@@ -80,6 +80,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.tooltip().valueSuffix("°C");
         options.legend().layout("vertical").align("right").verticalAlign("middle").borderWidth(0);
+        
+        options.plotOptions().series().states().hover().halo().size(20);
 
         Series series1 = (Series) JavaScriptObject.createObject();
         ArrayNumber data = series1.dataAsArrayNumber();
