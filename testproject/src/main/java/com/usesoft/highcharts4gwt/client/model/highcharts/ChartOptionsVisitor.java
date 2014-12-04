@@ -1,6 +1,9 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.web.bindery.event.shared.EventBus;
+import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.ClickGWTEvent;
+import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.JsoClickEvent;
 import com.usesoft.highcharts4gwt.model.array.api.Array;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
@@ -13,7 +16,12 @@ import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 {
-
+    private EventBus eventBus;
+    
+    public void setEventBus(EventBus eventBus){
+        this.eventBus = eventBus;
+    }
+    
     @Override
     public ChartOptions visitChart3D(Void in)
     {
@@ -151,6 +159,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series2);
         options.series().addToEnd(series3);
         options.series().addToEnd(series4);
+        
+        addSeriesClickHandler(options);
 
         return options;
     }
@@ -540,5 +550,33 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
+    
+    
+    protected void onSeriesClicked (JsoClickEvent event) {
+        eventBus.fireEvent (new ClickGWTEvent (event));
+    }
+    
+    private native ChartOptions addSeriesClickHandler (ChartOptions chartOptions) /*-{
+    var y = this;
+    return $wnd.jQuery.extend(true, null, chartOptions, 
+          {
+            plotOptions: {
+                series: {
+                    events: {
+                        click: function(event) {
+                          console.log('trying to call gwt method');
+                          y.@com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor::onSeriesClicked(Lcom/usesoft/highcharts4gwt/client/model/highcharts/jso/plotoptions/series/events/JsoClickEvent;)(
+                                $wnd.jQuery.extend(true, null, event, {source:this})
+                          );
+                        }
+                    }
+                }
+            }
+          });
+      }-*/;
+    
+    
+    
+    
 
 }
