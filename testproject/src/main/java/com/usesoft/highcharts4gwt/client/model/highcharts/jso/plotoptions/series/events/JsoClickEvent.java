@@ -2,7 +2,7 @@ package com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.serie
 
 import com.google.gwt.dom.client.NativeEvent;
 import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.ClickEvent;
-import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
+import com.usesoft.highcharts4gwt.model.highcharts.jso.JsoSeries;
 
 public class JsoClickEvent extends NativeEvent implements ClickEvent
 {
@@ -11,7 +11,7 @@ public class JsoClickEvent extends NativeEvent implements ClickEvent
     }
 
     @Override
-    public native final Series getSeries()/*-{
+    public native final JsoSeries getSeries()/*-{
 		return this.source.chart.options.series[this.source.index];
     }-*/;
 

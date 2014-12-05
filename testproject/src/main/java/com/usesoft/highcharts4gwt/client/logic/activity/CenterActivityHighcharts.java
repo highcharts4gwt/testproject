@@ -11,6 +11,8 @@ import com.usesoft.highcharts4gwt.client.model.highcharts.ChartCodeVisitor;
 import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.ClickEventHandler;
 import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.ClickGWTEvent;
 import com.usesoft.highcharts4gwt.client.view.center.CenterViewHighcharts;
+import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
+import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
 
 public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts> implements CenterViewHighcharts.Presenter, ClickEventHandler
 {
@@ -52,7 +54,8 @@ public class CenterActivityHighcharts extends BaseActivity<CenterViewHighcharts>
     @Override
     public boolean onClick(ClickGWTEvent clickEvent)
     {
-        Window.alert("click event received");
+        Series series = clickEvent.getSeries();
+        ArrayNumber dataAsArrayNumber = series.dataAsArrayNumber();
         return false;
     }
 

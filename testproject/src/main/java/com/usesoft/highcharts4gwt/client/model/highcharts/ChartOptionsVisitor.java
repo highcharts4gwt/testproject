@@ -549,24 +549,23 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series5);
 
         return options;
-    }
-    
+    }   
     
     protected void onSeriesClicked (JsoClickEvent event) {
         eventBus.fireEvent (new ClickGWTEvent (event));
     }
     
     private native ChartOptions addSeriesClickHandler (ChartOptions chartOptions) /*-{
-    var y = this;
-    return $wnd.jQuery.extend(true, null, chartOptions, 
+        var y = this;
+        return $wnd.jQuery.extend(true, chartOptions, 
           {
             plotOptions: {
                 series: {
+                    cursor: 'pointer',
                     events: {
                         click: function(event) {
-                          console.log('trying to call gwt method');
                           y.@com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor::onSeriesClicked(Lcom/usesoft/highcharts4gwt/client/model/highcharts/jso/plotoptions/series/events/JsoClickEvent;)(
-                                $wnd.jQuery.extend(true, null, event, {source:this})
+                                $wnd.jQuery.extend(true, event, {source:this})
                           );
                         }
                     }
@@ -574,9 +573,5 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             }
           });
       }-*/;
-    
-    
-    
-    
 
 }
