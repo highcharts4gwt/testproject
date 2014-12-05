@@ -2,7 +2,7 @@ package com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.serie
 
 import com.google.gwt.event.shared.EventHandler;
 
-public interface ClickEventHandler extends EventHandler
+public interface SeriesClickEventHandler extends EventHandler
 {
-    public boolean onClick(ClickGWTEvent clickEvent);
+    public boolean onSeriesClick(SeriesClickEventGwt clickEvent);
 }

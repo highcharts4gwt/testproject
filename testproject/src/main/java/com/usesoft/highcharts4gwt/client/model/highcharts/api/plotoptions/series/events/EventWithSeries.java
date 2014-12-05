@@ -2,7 +2,7 @@ package com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.serie
 
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
 
-public interface ClickEvent
+public interface EventWithSeries
 {
     Series getSeries();
 }

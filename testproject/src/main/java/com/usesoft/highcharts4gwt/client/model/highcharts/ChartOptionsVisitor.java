@@ -1,9 +1,12 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.user.client.Window;
 import com.google.web.bindery.event.shared.EventBus;
-import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.ClickGWTEvent;
-import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.JsoClickEvent;
+import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickEvent;
+import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler;
+import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.JsoSeriesClickEvent;
+import com.usesoft.highcharts4gwt.client.model.highcharts.jso.plotoptions.series.events.SeriesClickEventGwt;
 import com.usesoft.highcharts4gwt.model.array.api.Array;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
@@ -160,7 +163,16 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series3);
         options.series().addToEnd(series4);
         
-        addSeriesClickHandler(options);
+        addSeriesClickHandler(options, new SeriesClickHandler()
+        {
+            
+            @Override
+            public void onClick(SeriesClickEvent event)
+            {
+                Series series = event.getSeries();
+                Window.alert("coucou");
+            }
+        });
 
         return options;
     }
@@ -551,11 +563,11 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         return options;
     }   
     
-    protected void onSeriesClicked (JsoClickEvent event) {
-        eventBus.fireEvent (new ClickGWTEvent (event));
+    protected void onSeriesClicked (JsoSeriesClickEvent event) {
+        eventBus.fireEvent (new SeriesClickEventGwt (event));
     }
     
-    private native ChartOptions addSeriesClickHandler (ChartOptions chartOptions) /*-{
+    private native ChartOptions addSeriesClickHandler (ChartOptions chartOptions, SeriesClickHandler handler) /*-{
         var y = this;
         return $wnd.jQuery.extend(true, chartOptions, 
           {
@@ -564,7 +576,12 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
                     cursor: 'pointer',
                     events: {
                         click: function(event) {
-                          y.@com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor::onSeriesClicked(Lcom/usesoft/highcharts4gwt/client/model/highcharts/jso/plotoptions/series/events/JsoClickEvent;)(
+//                          y.@com.usesoft.highcharts4gwt.client.model.highcharts.ChartOptionsVisitor::onSeriesClicked(Lcom/usesoft/highcharts4gwt/client/model/highcharts/jso/plotoptions/series/events/JsoSeriesClickEvent;)(
+//                                $wnd.jQuery.extend(true, event, {source:this})
+//                          );
+                          
+                          
+                          handler.@com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler::onClick(Lcom/usesoft/highcharts4gwt/client/model/highcharts/api/plotoptions/series/events/SeriesClickEvent;)(
                                 $wnd.jQuery.extend(true, event, {source:this})
                           );
                         }
