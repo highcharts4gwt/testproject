@@ -16,12 +16,6 @@ import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 {
-    private EventBus eventBus;
-    
-    public void setEventBus(EventBus eventBus){
-        this.eventBus = eventBus;
-    }
-    
     @Override
     public ChartOptions visitChart3D(Void in)
     {
