@@ -534,14 +534,10 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         series5.name("Total consumption");
         series5.type("pie");
-        
-        ArrayString centerCoord = (JsoArrayString) JavaScriptObject.createObject(); 
-        //this will create a ArrayString but length will be undefined
-        //better to get the default center tab and then set the values    
-        centerCoord.setValue(0, "10%");
-        centerCoord.setValue(1, "20%");
 
-        options.plotOptions().pie().center(centerCoord);
+        ArrayNumber centerAsArrayNumber = options.plotOptions().pie().centerAsArrayNumber();
+        centerAsArrayNumber.setValue(0, 100);
+        centerAsArrayNumber.setValue(1, 80);
 
         options.plotOptions().pie().sizeAsNumber(100).showInLegend(false).dataLabels().enabled(false);
 
