@@ -2,5 +2,5 @@ package com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.serie
 
 public interface SeriesClickHandler
 {
-    void onClick(SeriesClickEvent event);
+    void onSeriesClick(SeriesClickEvent event);
 }
