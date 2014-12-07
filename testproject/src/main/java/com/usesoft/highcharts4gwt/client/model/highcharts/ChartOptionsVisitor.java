@@ -1,18 +1,19 @@
 package com.usesoft.highcharts4gwt.client.model.highcharts;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.web.bindery.event.shared.EventBus;
-import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickEvent;
-import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler;
+import com.google.gwt.user.client.Window;
 import com.usesoft.highcharts4gwt.model.array.api.Array;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayNumber;
 import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
-import com.usesoft.highcharts4gwt.model.array.jso.JsoArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
 import com.usesoft.highcharts4gwt.model.highcharts.api.labels.Item;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickEvent;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler;
 import com.usesoft.highcharts4gwt.model.highcharts.api.series.Data;
 import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
+//import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickEvent;
+//import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 {
@@ -162,6 +163,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             {
                 Series series = event.getSeries();
                 ArrayNumber dataAsArrayNumber = series.dataAsArrayNumber();
+                System.out.println("toto");
             }
         });
 
@@ -558,7 +560,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
                     cursor: 'pointer',
                     events: {
                         click: function(event) {                      
-                          handler.@com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/client/model/highcharts/api/plotoptions/series/events/SeriesClickEvent;)(
+                          handler.@com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/model/highcharts/api/plotoptions/series/SeriesClickEvent;)(
                                 $wnd.jQuery.extend(true, event, {source:this})
                           );
                         }
