@@ -155,7 +155,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series3);
         options.series().addToEnd(series4);
         
-        addSeriesClickHandler(options, new SeriesClickHandler()
+        addSeriesClickHandler(options.plotOptions().series(), new SeriesClickHandler()
         {
             
             @Override
@@ -551,20 +551,15 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         return options;
     }
     
-    private native ChartOptions addSeriesClickHandler (ChartOptions chartOptions, SeriesClickHandler handler) /*-{
-        return $wnd.jQuery.extend(true, chartOptions, 
+    private native ChartOptions addSeriesClickHandler (com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.Series series, SeriesClickHandler handler) /*-{
+        return $wnd.jQuery.extend(true, series, 
           {
-            plotOptions: {
-                series: {
-                    cursor: 'pointer',
-                    events: {
-                        click: function(event) {
-                          handler.@com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/model/highcharts/api/plotoptions/series/SeriesClickEvent;)(
-                                $wnd.jQuery.extend(true, event, {source:this})
-                          );
-                        }
-                    }
-                }
+            events: {
+                click: function(event) {
+                  handler.@com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/model/highcharts/api/plotoptions/series/SeriesClickEvent;)(
+                        $wnd.jQuery.extend(true, event, {source:this})
+                  );
+                }    
             }
           });
       }-*/;
