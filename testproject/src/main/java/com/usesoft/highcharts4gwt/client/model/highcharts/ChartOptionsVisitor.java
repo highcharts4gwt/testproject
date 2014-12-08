@@ -163,7 +163,6 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             {
                 Series series = event.getSeries();
                 ArrayNumber dataAsArrayNumber = series.dataAsArrayNumber();
-                System.out.println("toto");
             }
         });
 
@@ -559,7 +558,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
                 series: {
                     cursor: 'pointer',
                     events: {
-                        click: function(event) {                      
+                        click: function(event) {
                           handler.@com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/model/highcharts/api/plotoptions/series/SeriesClickEvent;)(
                                 $wnd.jQuery.extend(true, event, {source:this})
                           );
