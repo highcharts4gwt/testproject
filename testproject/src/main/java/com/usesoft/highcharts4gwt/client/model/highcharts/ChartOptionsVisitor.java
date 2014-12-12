@@ -8,12 +8,16 @@ import com.usesoft.highcharts4gwt.model.array.api.ArrayString;
 import com.usesoft.highcharts4gwt.model.highcharts.api.ChartOptions;
 import com.usesoft.highcharts4gwt.model.highcharts.api.Series;
 import com.usesoft.highcharts4gwt.model.highcharts.api.labels.Item;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.column.ColumnClickEvent;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.column.ColumnClickHandler;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.pie.PieClickEvent;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.pie.PieClickHandler;
 import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickEvent;
 import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.spline.SplineClickEvent;
+import com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.spline.SplineClickHandler;
 import com.usesoft.highcharts4gwt.model.highcharts.api.series.Data;
 import com.usesoft.highcharts4gwt.model.highcharts.api.xaxis.PlotLine;
-//import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickEvent;
-//import com.usesoft.highcharts4gwt.client.model.highcharts.api.plotoptions.series.events.SeriesClickHandler;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 {
@@ -155,14 +159,15 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series3);
         options.series().addToEnd(series4);
         
-        addSeriesClickHandler(options.plotOptions().series(), new SeriesClickHandler()
+        options.plotOptions().series().addSeriesClickHandler(new SeriesClickHandler()
         {
             
             @Override
-            public void onSeriesClick(SeriesClickEvent event)
+            public void onSeriesClick(SeriesClickEvent seriesClickEvent)
             {
-                Series series = event.getSeries();
-                ArrayNumber dataAsArrayNumber = series.dataAsArrayNumber();
+                Series series = seriesClickEvent.getSeries();
+                String name = series.name();
+                Window.alert("Series " + name + " clicked");
             }
         });
 
@@ -547,21 +552,46 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series3);
         options.series().addToEnd(series4);
         options.series().addToEnd(series5);
+        
+        options.plotOptions().column().addColumnClickHandler(new ColumnClickHandler()
+        {
+            
+            @Override
+            public void onColumnClick(ColumnClickEvent columnClickEvent)
+            {
+                Series series = columnClickEvent.getSeries();
+                String name = series.name();
+                Window.alert("Column  " + name + " clicked");
+            }
+        });
+        
+        
+        options.plotOptions().spline().addSplineClickHandler(new SplineClickHandler()
+        {
+            
+            @Override
+            public void onSplineClick(SplineClickEvent splineClickEvent)
+            {
+                Series series = splineClickEvent.getSeries();
+                String name = series.name();
+                Window.alert("Sline " + name + " clicked");
+            }
+        });
+        
+        
+        options.plotOptions().pie().addPieClickHandler(new PieClickHandler()
+        {
+            
+            @Override
+            public void onPieClick(PieClickEvent pieClickEvent)
+            {
+                Series series = pieClickEvent.getSeries();
+                String name = series.name();
+                Window.alert("Pie " + name + " clicked");
+            }
+        });
+      
 
         return options;
     }
-    
-    private native ChartOptions addSeriesClickHandler (com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.Series series, SeriesClickHandler handler) /*-{
-        return $wnd.jQuery.extend(true, series, 
-          {
-            events: {
-                click: function(event) {
-                  handler.@com.usesoft.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler::onSeriesClick(Lcom/usesoft/highcharts4gwt/model/highcharts/api/plotoptions/series/SeriesClickEvent;)(
-                        $wnd.jQuery.extend(true, event, {source:this})
-                  );
-                }    
-            }
-          });
-      }-*/;
-
 }
