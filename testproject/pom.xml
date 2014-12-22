@@ -123,9 +123,9 @@
 					<runTarget>testproject.html</runTarget>
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<compileSourcesArtifacts>
-						<artifact>com.usesoft.highcharts4gwt:highcharts</artifact>
+						<artifact>com.github.highcharts4gwt:highcharts</artifact>
 					</compileSourcesArtifacts>
-					<!-- <i18nMessagesBundle>org.usesoft.gwthighcharts.client.Messages</i18nMessagesBundle> -->
+					<!-- <i18nMessagesBundle>org.github.gwthighcharts.client.Messages</i18nMessagesBundle> -->
 
 				</configuration>
 
