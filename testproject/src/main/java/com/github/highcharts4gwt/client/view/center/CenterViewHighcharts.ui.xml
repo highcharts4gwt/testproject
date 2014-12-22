@@ -1,0 +1,19 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui" 
+	xmlns:m="urn:import:com.github.highcharts4gwt.client.view.region"
+	xmlns:h4g="urn:import:com.github.highcharts4gwt.client.view.widget"
+	>
+	
+	
+	<g:TabLayoutPanel barUnit='EM' barHeight='3'>
+		<g:tab>
+			<g:header>Chart</g:header>
+			<h4g:HighchartsLayoutPanel ui:field="chartPanel"></h4g:HighchartsLayoutPanel>
+		</g:tab>
+		<g:tab>
+			<g:header>Code</g:header>
+			<g:SimpleLayoutPanel ui:field="codePanel"></g:SimpleLayoutPanel>
+		</g:tab>
+	</g:TabLayoutPanel>
+</ui:UiBinder> 
