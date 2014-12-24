@@ -9,6 +9,9 @@ public interface MyStyle extends CssResource
     String link();
     
     String applicationTitle();
+    
+    String applicationLogo();
 
     String title();
+    
 }

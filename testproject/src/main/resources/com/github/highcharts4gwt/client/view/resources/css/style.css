@@ -1,11 +1,21 @@
 .applicationTitle 
 {
-	font-size: 30px;
-    font-weight : bold;
+	font-size: 25px;
     color: white;	
     margin: 0 10px;
+    font-family : Helvetica;
+    position : relative;
+    top : 11px;
+    color: #DDDDDD;
 } 
 
+img.applicationLogo
+{
+	height: 48px;
+    width: 48px;
+    margin : 0 0 0 10px;
+}
+ 
 .link 
 {
 	color: white;

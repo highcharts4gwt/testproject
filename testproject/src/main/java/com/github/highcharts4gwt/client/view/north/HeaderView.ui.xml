@@ -5,7 +5,7 @@
 	<ui:with field="style" type="com.github.highcharts4gwt.client.view.resources.MyResources" />
 	
 	<g:HorizontalPanel>
-	<g:FlowPanel><g:FocusPanel ui:field="title"><g:Label addStyleNames="{style.myStyle.applicationTitle}">Highcharts4gwt on github</g:Label></g:FocusPanel></g:FlowPanel>
+	<g:FlowPanel><g:FocusPanel ui:field="title"><g:HorizontalPanel><g:Image resource="{style.logo}" addStyleNames="{style.myStyle.applicationLogo}"/><g:Label addStyleNames="{style.myStyle.applicationTitle}">Highcharts4gwt</g:Label></g:HorizontalPanel></g:FocusPanel></g:FlowPanel>
 	<!-- <g:Button ui:field="place1Button" text="Highcharts" addStyleNames="wrapper-link"></g:Button> -->
 	<!-- <g:Button ui:field="place2Button" text="Highmaps" addStyleNames="wrapper-link"></g:Button> -->
 	</g:HorizontalPanel>
