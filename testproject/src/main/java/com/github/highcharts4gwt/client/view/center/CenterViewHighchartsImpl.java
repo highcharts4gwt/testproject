@@ -3,7 +3,7 @@ package com.github.highcharts4gwt.client.view.center;
 import javax.inject.Inject;
 
 import com.github.highcharts4gwt.client.view.widget.HighchartsLayoutPanel;
-import com.github.highcharts4gwt.model.highcharts.api.ChartOptions;
+import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;

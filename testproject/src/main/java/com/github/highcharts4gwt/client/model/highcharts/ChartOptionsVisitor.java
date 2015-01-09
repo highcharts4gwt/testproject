@@ -3,19 +3,19 @@ package com.github.highcharts4gwt.client.model.highcharts;
 import com.github.highcharts4gwt.model.array.api.Array;
 import com.github.highcharts4gwt.model.array.api.ArrayNumber;
 import com.github.highcharts4gwt.model.array.api.ArrayString;
-import com.github.highcharts4gwt.model.highcharts.api.ChartOptions;
-import com.github.highcharts4gwt.model.highcharts.api.Series;
-import com.github.highcharts4gwt.model.highcharts.api.labels.Item;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.column.ColumnClickEvent;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.column.ColumnClickHandler;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.pie.PieClickEvent;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.pie.PieClickHandler;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickEvent;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.series.SeriesClickHandler;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.spline.SplineClickEvent;
-import com.github.highcharts4gwt.model.highcharts.api.plotoptions.spline.SplineClickHandler;
-import com.github.highcharts4gwt.model.highcharts.api.series.Data;
-import com.github.highcharts4gwt.model.highcharts.api.yaxis.PlotLine;
+import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
+import com.github.highcharts4gwt.model.highcharts.option.api.Series;
+import com.github.highcharts4gwt.model.highcharts.option.api.labels.Item;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.column.ColumnClickEvent;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.column.ColumnClickHandler;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.pie.PieClickEvent;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.pie.PieClickHandler;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.series.SeriesClickEvent;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.series.SeriesClickHandler;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickEvent;
+import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickHandler;
+import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
+import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Window;
 
@@ -165,7 +165,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onSeriesClick(SeriesClickEvent seriesClickEvent)
             {
-                Series series = seriesClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = seriesClickEvent.getSeries();
                 String name = series.name();
                 Window.alert("Series " + name + " clicked");
             }
@@ -559,7 +559,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onColumnClick(ColumnClickEvent columnClickEvent)
             {
-                Series series = columnClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = columnClickEvent.getSeries();
                 String name = series.name();
                 Window.alert("Column  " + name + " clicked");
             }
@@ -572,7 +572,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onSplineClick(SplineClickEvent splineClickEvent)
             {
-                Series series = splineClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = splineClickEvent.getSeries();
                 String name = series.name();
                 Window.alert("Sline " + name + " clicked");
             }
@@ -585,7 +585,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onPieClick(PieClickEvent pieClickEvent)
             {
-                Series series = pieClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = pieClickEvent.getSeries();
                 String name = series.name();
                 Window.alert("Pie " + name + " clicked");
             }
