@@ -7,7 +7,7 @@ import javax.inject.Inject;
 
 import com.github.highcharts4gwt.client.infrastructure.injection.copy.ApplicationContext;
 import com.github.highcharts4gwt.client.logic.place.ChartPlace;
-import com.github.highcharts4gwt.client.model.highcharts.Chart;
+import com.github.highcharts4gwt.client.model.highcharts.ChartExample;
 import com.github.highcharts4gwt.client.model.highcharts.ChartCategory;
 import com.github.highcharts4gwt.client.view.west.WestViewHighcharts;
 
@@ -33,8 +33,8 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
         
         for (ChartCategory category : ChartCategory.values())
         {
-            List<Chart> linksToAdd  = new ArrayList<>();
-            for (Chart chart : Chart.values())
+            List<ChartExample> linksToAdd  = new ArrayList<>();
+            for (ChartExample chart : ChartExample.values())
             {
                 if (chart.getCategory() == category)
                     linksToAdd.add(chart);
@@ -42,7 +42,7 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
             
             if (linksToAdd.size()>0)
                 getView().addCategory(category);
-            for (Chart chart : linksToAdd)
+            for (ChartExample chart : linksToAdd)
             {
                 getView().addLink(chart);
             }
@@ -56,7 +56,7 @@ public class WestActivityHighcharts extends BaseActivity<WestViewHighcharts> imp
     }
 
     @Override
-    public void navigateTo(Chart chart)
+    public void navigateTo(ChartExample chart)
     {
         applicationContext.getPlaceController().goTo(new ChartPlace(chart.getUrlId()));
     }

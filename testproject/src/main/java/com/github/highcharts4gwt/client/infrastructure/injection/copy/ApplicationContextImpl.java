@@ -8,7 +8,7 @@ import com.github.highcharts4gwt.client.logic.activitymapper.north.NorthActivity
 import com.github.highcharts4gwt.client.logic.activitymapper.south.SouthActivityMapper;
 import com.github.highcharts4gwt.client.logic.activitymapper.west.WestActivityMapper;
 import com.github.highcharts4gwt.client.logic.place.ChartPlace;
-import com.github.highcharts4gwt.client.model.highcharts.Chart;
+import com.github.highcharts4gwt.client.model.highcharts.ChartExample;
 import com.github.highcharts4gwt.client.view.region.Region;
 import com.github.highcharts4gwt.client.view.rootlayout.RootView;
 import com.google.gwt.activity.shared.ActivityManager;
@@ -33,7 +33,7 @@ public class ApplicationContextImpl implements ApplicationContext
         this.defaultBus = eventBus;
         historyHandler = new PlaceHistoryHandler(phMapper);
         placeController = new PlaceController(eventBus);
-        historyHandler.register(placeController, defaultBus, new ChartPlace(Chart.ColumnLineAndPie.getUrlId()));
+        historyHandler.register(placeController, defaultBus, new ChartPlace(ChartExample.ColumnLineAndPie.getUrlId()));
 
         rootPresenter.start(eventBus);
 

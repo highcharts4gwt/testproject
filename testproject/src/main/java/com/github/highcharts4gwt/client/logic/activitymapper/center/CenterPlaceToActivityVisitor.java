@@ -7,7 +7,7 @@ import com.github.highcharts4gwt.client.logic.activity.CenterActivityHighchartsF
 import com.github.highcharts4gwt.client.logic.place.ChartPlace;
 import com.github.highcharts4gwt.client.logic.place.HighMapsPlace;
 import com.github.highcharts4gwt.client.logic.place.PlaceVisitor;
-import com.github.highcharts4gwt.client.model.highcharts.Chart;
+import com.github.highcharts4gwt.client.model.highcharts.ChartExample;
 import com.google.gwt.activity.shared.Activity;
 
 public class CenterPlaceToActivityVisitor implements PlaceVisitor<Void, Activity>
@@ -22,7 +22,7 @@ public class CenterPlaceToActivityVisitor implements PlaceVisitor<Void, Activity
         
         try
         {
-            Chart chart = Chart.valueOf(chartName);
+            ChartExample chart = ChartExample.valueOf(chartName);
             return factory.create(chart);
         }
         catch (Exception e)

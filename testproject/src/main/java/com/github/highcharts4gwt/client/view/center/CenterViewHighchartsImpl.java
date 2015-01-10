@@ -38,6 +38,7 @@ public class CenterViewHighchartsImpl extends Composite implements CenterViewHig
     public void setPresenter(Presenter presenter)
     {
         this.presenter = presenter;
+        chartPanel.setEventBus(presenter.getEventBus());
     }
 
     @Override

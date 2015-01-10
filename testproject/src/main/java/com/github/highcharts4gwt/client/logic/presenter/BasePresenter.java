@@ -29,7 +29,7 @@ public abstract class BasePresenter<T> implements Presenter<T>
     protected abstract void onDispose();
 
 
-    protected EventBus getEventBus()
+    public EventBus getEventBus()
     {
         return eventBus;
     }

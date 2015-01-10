@@ -2,7 +2,7 @@ package com.github.highcharts4gwt.client.view.west;
 
 import javax.inject.Inject;
 
-import com.github.highcharts4gwt.client.model.highcharts.Chart;
+import com.github.highcharts4gwt.client.model.highcharts.ChartExample;
 import com.github.highcharts4gwt.client.model.highcharts.ChartCategory;
 import com.github.highcharts4gwt.client.view.resources.MyResources;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -23,7 +23,7 @@ public class WestViewHighchartsImpl extends VerticalPanel implements WestViewHig
     }
     
     @Override
-    public void addLink(final Chart chart)
+    public void addLink(final ChartExample chart)
     {
         FocusPanel focus = new FocusPanel();
         Label label = new Label(chart.getLinkText());

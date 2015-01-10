@@ -1,7 +1,7 @@
 package com.github.highcharts4gwt.client.model.highcharts;
 
 
-public enum Chart
+public enum ChartExample
 {
     Chart3DColumn
     {
