@@ -3,6 +3,7 @@ package com.github.highcharts4gwt.client.model.highcharts;
 import com.github.highcharts4gwt.model.array.api.Array;
 import com.github.highcharts4gwt.model.array.api.ArrayNumber;
 import com.github.highcharts4gwt.model.array.api.ArrayString;
+import com.github.highcharts4gwt.model.highcharts.object.api.Point;
 import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
 import com.github.highcharts4gwt.model.highcharts.option.api.Series;
 import com.github.highcharts4gwt.model.highcharts.option.api.labels.Item;
@@ -165,9 +166,16 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onSeriesClick(SeriesClickEvent seriesClickEvent)
             {
-                com.github.highcharts4gwt.model.highcharts.object.api.Series series = seriesClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = seriesClickEvent.series();
                 String name = series.name();
-                Window.alert("Series " + name + " clicked");
+                Array<Point> points = series.data();
+                Point point0 = points.getItem(0);
+                String name2 = point0.series().name();
+                
+                //TODO investigate this does not seems to work, why ???
+                //double x = point0.x(); 
+                
+                Window.alert("Series " + name + " clicked" + "\nNumber of points : " + points.length());
             }
         });
 
@@ -192,6 +200,21 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.tooltip().pointFormat("{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}");
 
         options.plotOptions().area().pointStart(1940).marker().enabled(false).symbol("circle").radius(2).states().hover().enabled(true);
+        
+        options.plotOptions().area().point().addPointClickHandler(new com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.area.point.PointClickHandler()
+        {
+            
+            @Override
+            public void onPointClick(com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.area.point.PointClickEvent pointClickEvent)
+            {
+                Point point = pointClickEvent.point();
+                String seriesName = point.series().name();
+                double x = point.x();
+                double y = point.y();
+                Window.alert("Point clicked x:" + x + " y:" + y + "\n Series:" + seriesName);
+                
+            }
+        });
 
         Series series1 = (Series) JavaScriptObject.createObject();
 
@@ -559,7 +582,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onColumnClick(ColumnClickEvent columnClickEvent)
             {
-                com.github.highcharts4gwt.model.highcharts.object.api.Series series = columnClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = columnClickEvent.series();
                 String name = series.name();
                 Window.alert("Column  " + name + " clicked");
             }
@@ -572,7 +595,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onSplineClick(SplineClickEvent splineClickEvent)
             {
-                com.github.highcharts4gwt.model.highcharts.object.api.Series series = splineClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = splineClickEvent.series();
                 String name = series.name();
                 Window.alert("Sline " + name + " clicked");
             }
@@ -585,7 +608,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             @Override
             public void onPieClick(PieClickEvent pieClickEvent)
             {
-                com.github.highcharts4gwt.model.highcharts.object.api.Series series = pieClickEvent.getSeries();
+                com.github.highcharts4gwt.model.highcharts.object.api.Series series = pieClickEvent.series();
                 String name = series.name();
                 Window.alert("Pie " + name + " clicked");
             }
