@@ -1,5 +1,8 @@
 package com.github.highcharts4gwt.client.model.highcharts;
 
+import javax.inject.Inject;
+
+import com.github.highcharts4gwt.client.infrastructure.injection.copy.HighchartsFactory;
 import com.github.highcharts4gwt.model.array.api.Array;
 import com.github.highcharts4gwt.model.array.api.ArrayNumber;
 import com.github.highcharts4gwt.model.array.api.ArrayString;
@@ -19,15 +22,23 @@ import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Window;
+import com.google.inject.Provider;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
-{
+{  
+    private HighchartsFactory highchartsFactory;
+
+    @Inject
+    public ChartOptionsVisitor(HighchartsFactory highchartsFactory)
+    {
+        this.highchartsFactory = highchartsFactory;
+    }
     @Override
     public ChartOptions visitChart3D(Void in)
     {
         // http://jsfiddle.net/gh/get/jquery/1.7.2/highslide-software/highcharts.com/tree/master/samples/highcharts/chart/type-bar/
 
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
         options.chart().type("column");
         options.chart().margin().push(75);
         options.chart().options3d().enabled(true).alpha(15).beta(15).depth(50).viewDistance(25);
