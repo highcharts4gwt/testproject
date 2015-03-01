@@ -2,10 +2,10 @@ package com.github.highcharts4gwt.client.model.highcharts;
 
 import javax.inject.Inject;
 
-import com.github.highcharts4gwt.client.infrastructure.injection.copy.HighchartsFactory;
 import com.github.highcharts4gwt.model.array.api.Array;
 import com.github.highcharts4gwt.model.array.api.ArrayNumber;
 import com.github.highcharts4gwt.model.array.api.ArrayString;
+import com.github.highcharts4gwt.model.factory.api.HighchartsOptionFactory;
 import com.github.highcharts4gwt.model.highcharts.object.api.Point;
 import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
 import com.github.highcharts4gwt.model.highcharts.option.api.Series;
@@ -22,14 +22,13 @@ import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Window;
-import com.google.inject.Provider;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 {  
-    private HighchartsFactory highchartsFactory;
+    private HighchartsOptionFactory highchartsFactory;
 
     @Inject
-    public ChartOptionsVisitor(HighchartsFactory highchartsFactory)
+    public ChartOptionsVisitor(HighchartsOptionFactory highchartsFactory)
     {
         this.highchartsFactory = highchartsFactory;
     }
@@ -48,7 +47,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.plotOptions().column().depth(25);
 
-        Series series = (Series) JavaScriptObject.createObject();
+        Series series = highchartsFactory.createSeries();
 
         ArrayNumber data = series.dataAsArrayNumber();
         data.push(29.9);
@@ -72,7 +71,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     @Override
     public ChartOptions visitBasicLine(Void in)
     {
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
 
         options.title().text("Monthly Average Temperature").x(-20);
         options.subtitle().text("Source: WorldClimate.com").x(-20);
@@ -102,7 +101,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.plotOptions().series().states().hover().halo().size(20);
 
-        Series series1 = (Series) JavaScriptObject.createObject();
+        Series series1 = highchartsFactory.createSeries();
         ArrayNumber data = series1.dataAsArrayNumber();
         data.push(7.0);
         data.push(6.9);
@@ -118,7 +117,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data.push(9.6);
         series1.name("Tokyo");
 
-        Series series2 = (Series) JavaScriptObject.createObject();
+        Series series2 = highchartsFactory.createSeries();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(-0.2);
         data2.push(0.8);
@@ -134,7 +133,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.push(2.5);
         series2.name("New York");
 
-        Series series3 = (Series) JavaScriptObject.createObject();
+        Series series3 = highchartsFactory.createSeries();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(-0.9);
         data3.push(0.6);
@@ -150,7 +149,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data3.push(1.0);
         series3.name("Berlin");
 
-        Series series4 = (Series) JavaScriptObject.createObject();
+        Series series4 = highchartsFactory.createSeries();
         ArrayNumber data4 = series4.dataAsArrayNumber();
         data4.push(3.9);
         data4.push(4.2);
@@ -196,7 +195,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     @Override
     public ChartOptions visitBasicArea(Void in)
     {
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
 
         options.chart().type("area");
         options.title().text("US and USSR nuclear stockpiles");
@@ -227,7 +226,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             }
         });
 
-        Series series1 = (Series) JavaScriptObject.createObject();
+        Series series1 = highchartsFactory.createSeries();
 
         // TODO replace 0 by null ...
         ArrayNumber data = series1.dataAsArrayNumber();
@@ -302,7 +301,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         series1.name("USA");
 
-        Series series2 = (Series) JavaScriptObject.createObject();
+        Series series2 = highchartsFactory.createSeries();
         ArrayNumber data2 = series2.dataAsArrayNumber();
 
         // TODO replace 0 by null ...
@@ -386,7 +385,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     @Override
     public ChartOptions visitBasicBar(Void in)
     {
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
 
         options.chart().type("bar");
         options.title().text("Historic World Population by Region");
@@ -412,7 +411,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.credits().enabled(false);
 
-        Series series1 = (Series) JavaScriptObject.createObject();
+        Series series1 = highchartsFactory.createSeries();
         ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(107);
         data1.push(31);
@@ -421,7 +420,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data1.push(2);
         series1.name("Year 1800");
 
-        Series series2 = (Series) JavaScriptObject.createObject();
+        Series series2 = highchartsFactory.createSeries();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(133);
         data2.push(156);
@@ -430,7 +429,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.push(6);
         series2.name("Year 1900");
 
-        Series series3 = (Series) JavaScriptObject.createObject();
+        Series series3 = highchartsFactory.createSeries();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(973);
         data3.push(914);
@@ -449,7 +448,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     @Override
     public ChartOptions visitSolidGauge(Void in)
     {
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
 
         options.chart().type("solidgauge");
 
@@ -478,7 +477,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.credits().enabled(false);
 
-        Series series = (Series) JavaScriptObject.createObject();
+        Series series = highchartsFactory.createSeries();
         Array<Data> dataList = series.dataAsArrayObject();
 
         Data data = (Data) JavaScriptObject.createObject();
@@ -498,7 +497,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     @Override
     public ChartOptions visitColumnLineAndPie(Void in)
     {
-        ChartOptions options = (ChartOptions) JavaScriptObject.createObject();
+        ChartOptions options = highchartsFactory.createChartOptions();
 
         options.title().text("Combination chart");
 
@@ -514,7 +513,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         item.html("Total fruit consumption").style("{" + "\"left\": \"50px\"," + "\"top\": \"18px\"," + "\"color\": \"black\"" + "}");
         items.addToEnd(item);
         
-        Series series1 = (Series) JavaScriptObject.createObject();
+        Series series1 = highchartsFactory.createSeries();
         ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(3);
         data1.push(2);
@@ -524,7 +523,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series1.name("Jane");
         series1.type("column");
 
-        Series series2 = (Series) JavaScriptObject.createObject();
+        Series series2 = highchartsFactory.createSeries();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(2);
         data2.push(3);
@@ -534,7 +533,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series2.name("John");
         series2.type("column");
 
-        Series series3 = (Series) JavaScriptObject.createObject();
+        Series series3 = highchartsFactory.createSeries();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(4);
         data3.push(3);
@@ -544,7 +543,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series3.name("Joe");
         series3.type("column");
         
-        Series series4 = (Series) JavaScriptObject.createObject();
+        Series series4 = highchartsFactory.createSeries();
         ArrayNumber data4 = series4.dataAsArrayNumber();
         data4.push(3);
         data4.push(2.67);
@@ -557,7 +556,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.plotOptions().spline().marker().lineWidth(3).lineColor("#f7a35c").fillColor("white");
 
         
-        Series series5 = (Series) JavaScriptObject.createObject();
+        Series series5 = highchartsFactory.createSeries();
         Array<Data> dataList = series5.dataAsArrayObject();
         
         Data d1 = (Data) JavaScriptObject.createObject();

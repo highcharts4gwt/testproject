@@ -26,14 +26,12 @@ import com.github.highcharts4gwt.client.view.rootlayout.RootView;
 import com.github.highcharts4gwt.client.view.rootlayout.RootViewImpl;
 import com.github.highcharts4gwt.client.view.west.WestViewHighcharts;
 import com.github.highcharts4gwt.client.view.west.WestViewHighchartsImpl;
-import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
-import com.github.highcharts4gwt.model.highcharts.option.jso.JsoChartOptions;
+import com.github.highcharts4gwt.model.factory.api.HighchartsOptionFactory;
+import com.github.highcharts4gwt.model.factory.jso.JsoHighchartsOptionFactory;
 import com.google.gwt.activity.shared.Activity;
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.inject.client.AbstractGinModule;
 import com.google.gwt.inject.client.assistedinject.GinFactoryModuleBuilder;
 import com.google.gwt.place.shared.PlaceHistoryMapper;
-import com.google.inject.Provides;
 import com.google.web.bindery.event.shared.EventBus;
 import com.google.web.bindery.event.shared.SimpleEventBus;
 
@@ -74,7 +72,7 @@ public class MyModule extends AbstractGinModule
         // Make this activity a singleton to always use the same activity in west region
         bind(NorthSingletonActivity.class).in(Singleton.class);
         
-        bind(HighchartsFactory.class).to(JsoHighchartsFactory.class);
+        bind(HighchartsOptionFactory.class).to(JsoHighchartsOptionFactory.class);
         
         install(new GinFactoryModuleBuilder().implement(Activity.class, CenterActivityHighcharts.class).build(CenterActivityHighchartsFactory.class));
     
