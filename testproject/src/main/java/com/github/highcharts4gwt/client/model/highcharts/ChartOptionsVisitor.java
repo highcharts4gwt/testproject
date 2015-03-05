@@ -20,7 +20,6 @@ import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickHandler;
 import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
-import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.user.client.Window;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
@@ -92,7 +91,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.yAxis().title().text("Temperature (°C)");
 
-        PlotLine plotLine = (PlotLine) JavaScriptObject.createObject();
+        PlotLine plotLine = highchartsFactory.createYAxisPlotLine();
         plotLine.value(0).width(1).color("#808080");
         options.yAxis().plotLines().addToEnd(plotLine);
 
@@ -480,7 +479,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         Series series = highchartsFactory.createSeries();
         Array<Data> dataList = series.dataAsArrayObject();
 
-        Data data = (Data) JavaScriptObject.createObject();
+        Data data = highchartsFactory.createData();
         data.name("Speed");
         data.y(80);
         data.dataLabels("{\r\n    \"format\": \"<divstyle=\\\"text-align: center\\\"><span style=\\\"font-size: 25px;color: black\\\">{y}</span><br/><span style=\\\"font-size: 12px;color: silver\\\">km/h</span></div>\"\r\n}");
@@ -509,7 +508,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         categories.push("Plums");
 
         Array<Item> items = options.labels().items();
-        Item item = (Item) JavaScriptObject.createObject();
+        Item item = highchartsFactory.createItem();
         item.html("Total fruit consumption").style("{" + "\"left\": \"50px\"," + "\"top\": \"18px\"," + "\"color\": \"black\"" + "}");
         items.addToEnd(item);
         
@@ -559,15 +558,15 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         Series series5 = highchartsFactory.createSeries();
         Array<Data> dataList = series5.dataAsArrayObject();
         
-        Data d1 = (Data) JavaScriptObject.createObject();
+        Data d1 = highchartsFactory.createData();
         d1.y(13).name("Jane").color("#7cb5ec");
         dataList.addToEnd(d1);
         
-        Data d2 = (Data) JavaScriptObject.createObject();
+        Data d2 = highchartsFactory.createData();
         d2.y(23).name("John").color("#434348");
         dataList.addToEnd(d2);
         
-        Data d3 = (Data) JavaScriptObject.createObject();
+        Data d3 = highchartsFactory.createData();
         d3.y(19).name("Joe").color("#90ed7d");
         dataList.addToEnd(d3);
 
@@ -624,6 +623,70 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             }
         });
       
+
+        return options;
+    }
+    @Override
+    public ChartOptions visitPolarChart(Void in)
+    {
+        ChartOptions options = highchartsFactory.createChartOptions();
+        
+        
+        options.chart().polar(true);
+        
+        options.title().text("Highcharts Polar Chart");
+        
+        options.pane().startAngle(0).endAngle(360);
+        
+        options.xAxis().tickInterval(45).min(0).max(360);
+        
+        options.yAxis().min(0);
+        
+        options.plotOptions().series().pointStart(0).pointInterval(45);
+        options.plotOptions().column().pointPadding(0).groupPadding(0);
+        
+        //TODO missing formater
+        
+        //TODO missing pointPlacement inside series data
+        options.plotOptions().column().pointPlacementAsString("between");
+        Series series = highchartsFactory.createSeries().type("column").name("Column");
+        ArrayNumber data1 = series.dataAsArrayNumber();
+        data1.push(8);
+        data1.push(7);
+        data1.push(6);
+        data1.push(5);
+        data1.push(4);
+        data1.push(3);
+        data1.push(2);
+        data1.push(1);
+        
+        options.series().addToEnd(series);
+         
+        Series series2 = highchartsFactory.createSeries().type("line").name("Line");
+        ArrayNumber data2 = series2.dataAsArrayNumber();
+        data2.push(1);
+        data2.push(2);
+        data2.push(3);
+        data2.push(4);
+        data2.push(5);
+        data2.push(6);
+        data2.push(7);
+        data2.push(8);
+        
+        options.series().addToEnd(series2);
+        
+        Series series3 = highchartsFactory.createSeries().type("area").name("Area");
+        ArrayNumber data3 = series3.dataAsArrayNumber();
+        data3.push(1);
+        data3.push(8);
+        data3.push(2);
+        data3.push(7);
+        data3.push(3);
+        data3.push(6);
+        data3.push(4);
+        data3.push(5);
+        
+        options.series().addToEnd(series3);
 
         return options;
     }

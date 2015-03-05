@@ -57,6 +57,28 @@ public enum ChartCategory
         {
             return "GAUGES";
         }
+    },
+    HeatAndTreeMap
+    {
+        @Override
+        public String getCategoryDescription()
+        {
+            return "HEAT AND TREE MAPS ";
+        }
+    },
+    ScatterAndBubbleCharts {
+        @Override
+        public String getCategoryDescription()
+        {
+            return "SCATTER AND BUBBLE CHARTS";
+        }
+    },
+    MoreChartTypes {
+        @Override
+        public String getCategoryDescription()
+        {
+            return "MORE CHART TYPES";
+        }
     };
 
     public abstract String getCategoryDescription();

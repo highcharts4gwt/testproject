@@ -157,6 +157,31 @@ public enum ChartExample
         {
             return "Column, line and pie";
         }
+    },
+    PolarChart {
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitPolarChart(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.MoreChartTypes;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Polar chart";
+        }
     };
     
     public abstract <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in);

@@ -13,4 +13,6 @@ public interface ChartVisitor<IN, OUT>
     OUT visitSolidGauge (IN in);
 
     OUT visitColumnLineAndPie (IN in);
+    
+    OUT visitPolarChart (IN in);
 }
