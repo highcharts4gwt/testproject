@@ -67,4 +67,10 @@ public class ChartCodeVisitor implements ChartVisitor<Void, String>
     {
         return "";
     }
+
+    @Override
+    public String visitTreeMapWithColumnAxis(Void in)
+    {
+        return "";
+    }
 }

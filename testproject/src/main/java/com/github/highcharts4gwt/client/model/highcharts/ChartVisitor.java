@@ -15,4 +15,6 @@ public interface ChartVisitor<IN, OUT>
     OUT visitColumnLineAndPie (IN in);
     
     OUT visitPolarChart (IN in);
+    
+    OUT visitTreeMapWithColumnAxis (IN in);
 }

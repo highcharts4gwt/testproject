@@ -647,7 +647,6 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         //TODO missing formater
         
-        //TODO missing pointPlacement inside series data
         options.plotOptions().column().pointPlacementAsString("between");
         Series series = highchartsFactory.createSeries().type("column").name("Column");
         ArrayNumber data1 = series.dataAsArrayNumber();
@@ -689,5 +688,39 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series3);
 
         return options;
+    }
+    
+    @Override
+    public ChartOptions visitTreeMapWithColumnAxis(Void in)
+    {
+        ChartOptions options = highchartsFactory.createChartOptions();
+        
+        options.setFieldAsJsonObject("colorAxis", "{ \"minColor\" : \"#FFFFFF\", \"maxColor\" : \"#7cb5ec\"}");
+        
+        Series series = highchartsFactory.createSeries();
+        series.type("treemap").setFieldAsJsonObject("layoutAlgorithm", "\"squarified\"");
+        Array<Data> dataList = series.dataAsArrayObject();
+        
+        dataList.addToEnd(createTreeMapDataObject("A", "6", 1));
+        dataList.addToEnd(createTreeMapDataObject("B", "6", 2));
+        dataList.addToEnd(createTreeMapDataObject("C", "4", 3));
+        dataList.addToEnd(createTreeMapDataObject("D", "3", 4));
+        dataList.addToEnd(createTreeMapDataObject("E", "2", 5));
+        dataList.addToEnd(createTreeMapDataObject("F", "2", 6));
+        dataList.addToEnd(createTreeMapDataObject("G", "1", 7));
+        
+        options.series().addToEnd(series);
+        
+        options.title().text("Highcharts Treemap");
+        return options;
+ 
+    }
+    
+    private Data createTreeMapDataObject(String name, String value, double colorValue)
+    {
+        Data data = highchartsFactory.createData();
+        data.name(name).colorValue(colorValue);
+        data.setFieldAsJsonObject("value", value);
+        return data;
     }
 }

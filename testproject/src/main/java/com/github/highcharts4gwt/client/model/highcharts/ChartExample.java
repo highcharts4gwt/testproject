@@ -182,6 +182,31 @@ public enum ChartExample
         {
             return "Polar chart";
         }
+    },
+    TreeMapWithColumnAxis {
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitTreeMapWithColumnAxis(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.HeatAndTreeMap;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Tree map with column axis";
+        }
     };
     
     public abstract <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in);
