@@ -22,6 +22,12 @@
 	</properties>
 
 	<dependencies>
+  		<dependency>
+			<groupId>com.github.ronanquillevere</groupId>
+  			<artifactId>exportcodestring</artifactId>
+   			<version>1.0-SNAPSHOT</version>
+		</dependency>
+  
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
@@ -50,7 +56,7 @@
 		<dependency>
 		    <groupId>com.github.highcharts4gwt</groupId>
 		    <artifactId>highcharts</artifactId>
-		    <version>0.0.4-SNAPSHOT</version>
+		    <version>0.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>

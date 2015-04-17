@@ -20,6 +20,7 @@ import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickHandler;
 import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
+import com.github.ronanquillevere.generator.ExportAnnotations.ExportMaker;
 import com.google.gwt.user.client.Window;
 
 public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
@@ -31,6 +32,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
     {
         this.highchartsFactory = highchartsFactory;
     }
+    
+    @ExportMaker(name = "visitChart3D")
     @Override
     public ChartOptions visitChart3D(Void in)
     {
@@ -66,7 +69,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
-
+    
+    @ExportMaker(name = "visitBasicLine")
     @Override
     public ChartOptions visitBasicLine(Void in)
     {
@@ -178,8 +182,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
                 com.github.highcharts4gwt.model.highcharts.object.api.Series series = seriesClickEvent.series();
                 String name = series.name();
                 Array<Point> points = series.data();
-                Point point0 = points.getItem(0);
-                String name2 = point0.series().name();
+                //Point point0 = points.getItem(0);
+                //String name2 = point0.series().name();
                 
                 //TODO investigate this does not seems to work, why ???
                 //double x = point0.x(); 
@@ -190,7 +194,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
-
+    
+    @ExportMaker(name = "visitBasicArea")
     @Override
     public ChartOptions visitBasicArea(Void in)
     {
@@ -380,7 +385,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         options.series().addToEnd(series2);
         return options;
     }
-
+    
+    @ExportMaker(name = "visitBasicBar")
     @Override
     public ChartOptions visitBasicBar(Void in)
     {
@@ -443,7 +449,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
-
+    
+    @ExportMaker(name = "visitSolidGauge")
     @Override
     public ChartOptions visitSolidGauge(Void in)
     {
@@ -492,7 +499,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
-
+    
+    @ExportMaker(name = "visitColumnLineAndPie")
     @Override
     public ChartOptions visitColumnLineAndPie(Void in)
     {
@@ -626,6 +634,8 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         return options;
     }
+    
+    @ExportMaker(name = "visitPolarChart")
     @Override
     public ChartOptions visitPolarChart(Void in)
     {
@@ -690,6 +700,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         return options;
     }
     
+    @ExportMaker(name = "visitTreeMapWithColumnAxis")
     @Override
     public ChartOptions visitTreeMapWithColumnAxis(Void in)
     {

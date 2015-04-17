@@ -1,76 +1,40 @@
 package com.github.highcharts4gwt.client.model.highcharts;
 
+import com.github.ronanquillevere.generator.ExportAnnotations.ExportMethod;
 
-public class ChartCodeVisitor implements ChartVisitor<Void, String>
+public interface ChartCodeVisitor extends ChartVisitor<Void, String>
 {
-    //http://www.freeformatter.com/java-dotnet-escape.html#ad-output 
-    
-    @Override
-    public String visitChart3D(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n" +
-        		"options.chart().type(\"column\");\r\n" +
-        		"options.chart().margin().push(75);\r\n" +
-        		"options.chart().options3d().enabled(true).alpha(15).beta(15).depth(50).viewDistance(25);\r\n\r\n" +
-        		"options.title().text(\"Chart rotation demo\");\r\n" +
-        		"options.subtitle().text(\"Test options by dragging the sliders below\");\r\n\r\n" +
-        		"options.plotOptions().column().depth(25);\r\n\r\n" +
-        		"Series series = (Series) JavaScriptObject.createObject();\r\n\r\n" +
-        		"ArrayNumber data = series.dataAsArrayNumber();\r\n" +
-        		"data.push(29.9);\r\n" +
-        		"data.push(71.5);\r\n" +
-        		"data.push(106.4);\r\n" +
-        		"data.push(129.2);\r\n" +
-        		"data.push(144.0);\r\n" +
-        		"data.push(176.0);\r\n" +
-        		"data.push(135.6);\r\n" +
-        		"data.push(148.5);\r\n" +
-        		"data.push(216.4);\r\n" +
-        		"data.push(194.1);\r\n" +
-        		"data.push(95.6);\r\n" +
-        		"data.push(54.4);\r\n\r\n" +
-        		"options.series().addToEnd(series);";
-    }
+    // http://www.freeformatter.com/java-dotnet-escape.html#ad-output
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitChart3D")
     @Override
-    public String visitBasicLine(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n\r\noptions.title().text(\"Monthly Average Temperature\").x(-20);\r\noptions.subtitle().text(\"Source: WorldClimate.com\").x(-20);\r\n\r\nArrayString categories = options.xAxis().categories();\r\ncategories.push(\"Jan\");\r\ncategories.push(\"Feb\");\r\ncategories.push(\"Mar\");\r\ncategories.push(\"Apr\");\r\ncategories.push(\"May\");\r\ncategories.push(\"Jun\");\r\ncategories.push(\"Jul\");\r\ncategories.push(\"Aug\");\r\ncategories.push(\"Sep\");\r\ncategories.push(\"Oct\");\r\ncategories.push(\"Nov\");\r\ncategories.push(\"Dec\");\r\n\r\noptions.yAxis().title().text(\"Temperature (\u00B0C)\");\r\n\r\nPlotLine plotLine = (PlotLine) JavaScriptObject.createObject();\r\nplotLine.value(0).width(1).color(\"#808080\");\r\noptions.yAxis().plotLines().addToEnd(plotLine);\r\n\r\noptions.tooltip().valueSuffix(\"\u00B0C\");\r\noptions.legend().layout(\"vertical\").align(\"right\").verticalAlign(\"middle\").borderWidth(0);\r\n\r\noptions.plotOptions().series().states().hover().halo().size(20);\r\n\r\nSeries series1 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data = series1.dataAsArrayNumber();\r\ndata.push(7.0);\r\ndata.push(6.9);\r\ndata.push(9.5);\r\ndata.push(14.5);\r\ndata.push(18.2);\r\ndata.push(21.5);\r\ndata.push(25.2);\r\ndata.push(26.5);\r\ndata.push(23.3);\r\ndata.push(18.3);\r\ndata.push(13.9);\r\ndata.push(9.6);\r\nseries1.name(\"Tokyo\");\r\n\r\nSeries series2 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data2 = series2.dataAsArrayNumber();\r\ndata2.push(-0.2);\r\ndata2.push(0.8);\r\ndata2.push(5.7);\r\ndata2.push(11.3);\r\ndata2.push(17.0);\r\ndata2.push(22.0);\r\ndata2.push(24.8);\r\ndata2.push(24.1);\r\ndata2.push(20.1);\r\ndata2.push(14.1);\r\ndata2.push(8.6);\r\ndata2.push(2.5);\r\nseries2.name(\"New York\");\r\n\r\nSeries series3 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data3 = series3.dataAsArrayNumber();\r\ndata3.push(-0.9);\r\ndata3.push(0.6);\r\ndata3.push(3.5);\r\ndata3.push(8.4);\r\ndata3.push(13.5);\r\ndata3.push(17.0);\r\ndata3.push(18.6);\r\ndata3.push(17.9);\r\ndata3.push(14.3);\r\ndata3.push(9.0);\r\ndata3.push(3.9);\r\ndata3.push(1.0);\r\nseries3.name(\"Berlin\");\r\n\r\nSeries series4 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data4 = series4.dataAsArrayNumber();\r\ndata4.push(3.9);\r\ndata4.push(4.2);\r\ndata4.push(5.7);\r\ndata4.push(8.5);\r\ndata4.push(11.9);\r\ndata4.push(15.2);\r\ndata4.push(17.0);\r\ndata4.push(16.6);\r\ndata4.push(14.2);\r\ndata4.push(10.3);\r\ndata4.push(6.6);\r\ndata4.push(4.8);\r\nseries4.name(\"London\");\r\n\r\noptions.series().addToEnd(series1);\r\noptions.series().addToEnd(series2);\r\noptions.series().addToEnd(series3);\r\noptions.series().addToEnd(series4);\r\n\r\noptions.plotOptions().series().addSeriesClickHandler(new SeriesClickHandler()\r\n{\r\n    \r\n    @Override\r\n    public void onSeriesClick(SeriesClickEvent seriesClickEvent)\r\n    {\r\n        com.github.highcharts4gwt.model.highcharts.object.api.Series series = seriesClickEvent.getSeries();\r\n        String name = series.name();\r\n        Window.alert(\"Series \" + name + \" clicked\");\r\n    }\r\n});";
-    }
+    public String visitChart3D(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitBasicLine")
     @Override
-    public String visitBasicArea(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n\r\noptions.chart().type(\"area\");\r\noptions.title().text(\"US and USSR nuclear stockpiles\");\r\noptions.subtitle().text(\"Source: <a href=\\\"http://thebulletin.metapress.com/content/c4120650912x74k7/fulltext.pdf\\\">thebulletin.metapress.com</a>\");\r\n\r\n// TODO add formater when available\r\noptions.xAxis().allowDecimals(false);\r\n\r\n// TODO add formater when available\r\noptions.yAxis().title().text(\"Nuclear weapon states\");\r\n\r\noptions.tooltip().pointFormat(\"{series.name} produced <b>{point.y:,.0f}</b><br/>warheads in {point.x}\");\r\n\r\noptions.plotOptions().area().pointStart(1940).marker().enabled(false).symbol(\"circle\").radius(2).states().hover().enabled(true);\r\n\r\nSeries series1 = (Series) JavaScriptObject.createObject();\r\n\r\n// TODO replace 0 by null ...\r\nArrayNumber data = series1.dataAsArrayNumber();\r\ndata.setValue(0, 0);\r\ndata.setValue(1, 0);\r\ndata.setValue(2, 0);\r\ndata.setValue(3, 0);\r\ndata.setValue(4, 0);\r\nint i = 4;\r\ndata.setValue(++i, 6);\r\ndata.setValue(++i, 11);\r\ndata.setValue(++i, 32);\r\ndata.setValue(++i, 110);\r\ndata.setValue(++i, 235);\r\ndata.setValue(++i, 369);\r\ndata.setValue(++i, 640);\r\ndata.setValue(++i, 1005);\r\ndata.setValue(++i, 1436);\r\ndata.setValue(++i, 2063);\r\ndata.setValue(++i, 3057);\r\ndata.setValue(++i, 4618);\r\ndata.setValue(++i, 6444);\r\ndata.setValue(++i, 9822);\r\ndata.setValue(++i, 15468);\r\ndata.setValue(++i, 20434);\r\ndata.setValue(++i, 24126);\r\ndata.setValue(++i, 27387);\r\ndata.setValue(++i, 29459);\r\ndata.setValue(++i, 31056);\r\ndata.setValue(++i, 31982);\r\ndata.setValue(++i, 32040);\r\ndata.setValue(++i, 31233);\r\ndata.setValue(++i, 29224);\r\ndata.setValue(++i, 27342);\r\ndata.setValue(++i, 26662);\r\ndata.setValue(++i, 26956);\r\ndata.setValue(++i, 27912);\r\ndata.setValue(++i, 28999);\r\ndata.setValue(++i, 28965);\r\ndata.setValue(++i, 27826);\r\ndata.setValue(++i, 25579);\r\ndata.setValue(++i, 25722);\r\ndata.setValue(++i, 24826);\r\ndata.setValue(++i, 24605);\r\ndata.setValue(++i, 24304);\r\ndata.setValue(++i, 23464);\r\ndata.setValue(++i, 23708);\r\ndata.setValue(++i, 24099);\r\ndata.setValue(++i, 24357);\r\ndata.setValue(++i, 24237);\r\ndata.setValue(++i, 24401);\r\ndata.setValue(++i, 24344);\r\ndata.setValue(++i, 23586);\r\ndata.setValue(++i, 22380);\r\ndata.setValue(++i, 21004);\r\ndata.setValue(++i, 17287);\r\ndata.setValue(++i, 14747);\r\ndata.setValue(++i, 13076);\r\ndata.setValue(++i, 12555);\r\ndata.setValue(++i, 12144);\r\ndata.setValue(++i, 11009);\r\ndata.setValue(++i, 10950);\r\ndata.setValue(++i, 10871);\r\ndata.setValue(++i, 10824);\r\ndata.setValue(++i, 10577);\r\ndata.setValue(++i, 10527);\r\ndata.setValue(++i, 10475);\r\ndata.setValue(++i, 10421);\r\ndata.setValue(++i, 10358);\r\ndata.setValue(++i, 10295);\r\ndata.setValue(++i, 10104);\r\n\r\nseries1.name(\"USA\");\r\n\r\nSeries series2 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data2 = series2.dataAsArrayNumber();\r\n\r\n// TODO replace 0 by null ...\r\ndata2.setValue(0, 0);\r\ndata2.setValue(1, 0);\r\ndata2.setValue(2, 0);\r\ndata2.setValue(3, 0);\r\ndata2.setValue(4, 0);\r\ndata2.setValue(5, 0);\r\ndata2.setValue(6, 0);\r\ndata2.setValue(7, 0);\r\ndata2.setValue(8, 0);\r\ndata2.setValue(9, 0);\r\n\r\nint j = 9;\r\ndata2.setValue(++j, 5);\r\ndata2.setValue(++j, 25);\r\ndata2.setValue(++j, 50);\r\ndata2.setValue(++j, 120);\r\ndata2.setValue(++j, 150);\r\ndata2.setValue(++j, 200);\r\ndata2.setValue(++j, 426);\r\ndata2.setValue(++j, 660);\r\ndata2.setValue(++j, 869);\r\ndata2.setValue(++j, 1060);\r\ndata2.setValue(++j, 1605);\r\ndata2.setValue(++j, 2471);\r\ndata2.setValue(++j, 3322);\r\ndata2.setValue(++j, 4238);\r\ndata2.setValue(++j, 5221);\r\ndata2.setValue(++j, 6129);\r\ndata2.setValue(++j, 7089);\r\ndata2.setValue(++j, 8339);\r\ndata2.setValue(++j, 9399);\r\ndata2.setValue(++j, 10538);\r\ndata2.setValue(++j, 11643);\r\ndata2.setValue(++j, 13092);\r\ndata2.setValue(++j, 14478);\r\ndata2.setValue(++j, 15915);\r\ndata2.setValue(++j, 17385);\r\ndata2.setValue(++j, 19055);\r\ndata2.setValue(++j, 21205);\r\ndata2.setValue(++j, 23044);\r\ndata2.setValue(++j, 25393);\r\ndata2.setValue(++j, 27935);\r\ndata2.setValue(++j, 30062);\r\ndata2.setValue(++j, 32049);\r\ndata2.setValue(++j, 33952);\r\ndata2.setValue(++j, 35804);\r\ndata2.setValue(++j, 37431);\r\ndata2.setValue(++j, 39197);\r\ndata2.setValue(++j, 45000);\r\ndata2.setValue(++j, 43000);\r\ndata2.setValue(++j, 41000);\r\ndata2.setValue(++j, 39000);\r\ndata2.setValue(++j, 37000);\r\ndata2.setValue(++j, 35000);\r\ndata2.setValue(++j, 33000);\r\ndata2.setValue(++j, 31000);\r\ndata2.setValue(++j, 29000);\r\ndata2.setValue(++j, 27000);\r\ndata2.setValue(++j, 25000);\r\ndata2.setValue(++j, 24000);\r\ndata2.setValue(++j, 23000);\r\ndata2.setValue(++j, 22000);\r\ndata2.setValue(++j, 21000);\r\ndata2.setValue(++j, 20000);\r\ndata2.setValue(++j, 19000);\r\ndata2.setValue(++j, 18000);\r\ndata2.setValue(++j, 18000);\r\ndata2.setValue(++j, 17000);\r\ndata2.setValue(++j, 16000);\r\n\r\nseries2.name(\"USSR/Russia\");\r\n\r\noptions.series().addToEnd(series1);\r\noptions.series().addToEnd(series2);";
-    }
+    public String visitBasicLine(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitBasicArea")
     @Override
-    public String visitBasicBar(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n\r\noptions.chart().type(\"bar\");\r\noptions.title().text(\"Historic World Population by Region\");\r\noptions.subtitle().text(\"Source: Wikipedia.org\");\r\n\r\nArrayString categories = options.xAxis().categories();\r\ncategories.push(\"Africa\");\r\ncategories.push(\"America\");\r\ncategories.push(\"Asia\");\r\ncategories.push(\"Oceania\");\r\n\r\noptions.xAxis().title().text(null);\r\n\r\noptions.yAxis().min(0).title().text(\"Population (millions)\").align(\"high\");\r\noptions.yAxis().labels().overflow(\"justify\");\r\n\r\noptions.tooltip().valueSuffix(\" millions\");\r\n\r\noptions.plotOptions().bar().dataLabels().enabled(true);\r\n\r\noptions.legend().layout(\"vertical\").align(\"right\").verticalAlign(\"top\").x(-40).y(100).floating(true).borderWidth(1).backgroundColor(\"#FFFFFF\").shadowAsBoolean(true);\r\n\r\noptions.credits().enabled(false);\r\n\r\nSeries series1 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data1 = series1.dataAsArrayNumber();\r\ndata1.push(107);\r\ndata1.push(31);\r\ndata1.push(635);\r\ndata1.push(203);\r\ndata1.push(2);\r\nseries1.name(\"Year 1800\");\r\n\r\nSeries series2 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data2 = series2.dataAsArrayNumber();\r\ndata2.push(133);\r\ndata2.push(156);\r\ndata2.push(947);\r\ndata2.push(408);\r\ndata2.push(6);\r\nseries2.name(\"Year 1900\");\r\n\r\nSeries series3 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data3 = series3.dataAsArrayNumber();\r\ndata3.push(973);\r\ndata3.push(914);\r\ndata3.push(4054);\r\ndata3.push(732);\r\ndata3.push(34);\r\nseries3.name(\"Year 2008\");\r\n\r\noptions.series().addToEnd(series1);\r\noptions.series().addToEnd(series2);\r\noptions.series().addToEnd(series3);";
-    }
+    public String visitBasicArea(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitBasicBar")
     @Override
-    public String visitSolidGauge(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n\r\noptions.chart().type(\"solidgauge\");\r\n\r\noptions.title(null);\r\n\r\nArrayString center = options.pane().centerAsArrayString();\r\ncenter.push(\"50%\");\r\ncenter.push(\"85%\");\r\n\r\noptions.pane().sizeAsString(\"100%\").startAngle(-90).endAngle(90)\r\n.background(\"{\" + \"\\\"backgroundColor\\\": \\\"#EEE\\\",\" + \"\\\"innerRadius\\\": \\\"60%\\\",\" + \"\\\"outerRadius\\\": \\\"100%\\\",\"\r\n+ \"\\\"shape\\\": \\\"arc\\\"\" + \"}\");\r\n\r\noptions.tooltip().enabled(false);\r\n\r\n// TODO add stops\r\n// TODO options.yAxis.title.y not documented ? contact highcharts\r\n\r\noptions.yAxis().lineWidth(0).tickPixelInterval(400).tickWidth(0).labels().y(16);\r\n\r\n// TODO minorTickInterval double to null ? how to do that ?\r\n\r\noptions.plotOptions().solidgauge().dataLabels().borderWidth(0).y(5).useHTML(true);\r\n\r\noptions.yAxis().min(0).max(200).title().text(\"Speed\");\r\n\r\noptions.credits().enabled(false);\r\n\r\nSeries series = (Series) JavaScriptObject.createObject();\r\nArray<Data> dataList = series.dataAsArrayObject();\r\n\r\nData data = (Data) JavaScriptObject.createObject();\r\ndata.name(\"Speed\");\r\ndata.y(80);\r\ndata.dataLabels(\"{\\\"format\\\": \\\"<div style=\\\"text-align:center\\\"><span style=\\\"font-size:25px;color:black\\\">{y}</span><br/><span style=\\\"font-size:12px;color:silver\\\">km/h</span></div>\\\"}\");\r\ndataList.addToEnd(data);\r\n\r\n\r\noptions.plotOptions().series().tooltip().valueSuffix(\" km/h\");\r\n\r\noptions.series().addToEnd(series);";
-    }
+    public String visitBasicBar(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitSolidGauge")
     @Override
-    public String visitColumnLineAndPie(Void in)
-    {
-        return "ChartOptions options = (ChartOptions) JavaScriptObject.createObject();\r\n\r\noptions.title().text(\"Combination chart\");\r\n\r\nArrayString categories = options.xAxis().categories();\r\ncategories.push(\"Apples\");\r\ncategories.push(\"Oranges\");\r\ncategories.push(\"Pears\");\r\ncategories.push(\"Bananas\");\r\ncategories.push(\"Plums\");\r\n\r\nArray<Item> items = options.labels().items();\r\nItem item = (Item) JavaScriptObject.createObject();\r\nitem.html(\"Total fruit consumption\").style(\"{\" + \"\\\"left\\\": \\\"50px\\\",\" + \"\\\"top\\\": \\\"18px\\\",\" + \"\\\"color\\\": \\\"black\\\"\" + \"}\");\r\nitems.addToEnd(item);\r\n\r\nSeries series1 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data1 = series1.dataAsArrayNumber();\r\ndata1.push(3);\r\ndata1.push(2);\r\ndata1.push(1);\r\ndata1.push(3);\r\ndata1.push(4);\r\nseries1.name(\"Jane\");\r\nseries1.type(\"column\");\r\n\r\nSeries series2 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data2 = series2.dataAsArrayNumber();\r\ndata2.push(2);\r\ndata2.push(3);\r\ndata2.push(5);\r\ndata2.push(7);\r\ndata2.push(6);\r\nseries2.name(\"John\");\r\nseries2.type(\"column\");\r\n\r\nSeries series3 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data3 = series3.dataAsArrayNumber();\r\ndata3.push(4);\r\ndata3.push(3);\r\ndata3.push(3);\r\ndata3.push(9);\r\ndata3.push(0);\r\nseries3.name(\"Joe\");\r\nseries3.type(\"column\");\r\n\r\nSeries series4 = (Series) JavaScriptObject.createObject();\r\nArrayNumber data4 = series4.dataAsArrayNumber();\r\ndata4.push(3);\r\ndata4.push(2.67);\r\ndata4.push(3);\r\ndata4.push(6.33);\r\ndata4.push(3.33);\r\nseries4.name(\"Average\");\r\nseries4.type(\"spline\");\r\n\r\noptions.plotOptions().spline().marker().lineWidth(3).lineColor(\"#f7a35c\").fillColor(\"white\");\r\n\r\n\r\nSeries series5 = (Series) JavaScriptObject.createObject();\r\nArray<Data> dataList = series5.dataAsArrayObject();\r\n\r\nData d1 = (Data) JavaScriptObject.createObject();\r\nd1.y(13).name(\"Jane\").color(\"#7cb5ec\");\r\ndataList.addToEnd(d1);\r\n\r\nData d2 = (Data) JavaScriptObject.createObject();\r\nd2.y(23).name(\"John\").color(\"#434348\");\r\ndataList.addToEnd(d2);\r\n\r\nData d3 = (Data) JavaScriptObject.createObject();\r\nd3.y(19).name(\"Joe\").color(\"#90ed7d\");\r\ndataList.addToEnd(d3);\r\n\r\nseries5.name(\"Total consumption\");\r\nseries5.type(\"pie\");\r\n\r\nArrayNumber centerAsArrayNumber = options.plotOptions().pie().centerAsArrayNumber();\r\ncenterAsArrayNumber.setValue(0, 100);\r\ncenterAsArrayNumber.setValue(1, 80);\r\n\r\noptions.plotOptions().pie().sizeAsNumber(100).showInLegend(false).dataLabels().enabled(false);\r\n\r\noptions.series().addToEnd(series1);\r\noptions.series().addToEnd(series2);\r\noptions.series().addToEnd(series3);\r\noptions.series().addToEnd(series4);\r\noptions.series().addToEnd(series5);\r\n\r\noptions.plotOptions().column().addColumnClickHandler(new ColumnClickHandler()\r\n{\r\n    \r\n    @Override\r\n    public void onColumnClick(ColumnClickEvent columnClickEvent)\r\n    {\r\n            com.github.highcharts4gwt.model.highcharts.object.api.Series series = columnClickEvent.getSeries();\r\n            String name = series.name();\r\n            Window.alert(\"Column  \" + name + \" clicked\");\r\n    }\r\n});\r\n\r\n\r\noptions.plotOptions().spline().addSplineClickHandler(new SplineClickHandler()\r\n{\r\n    \r\n    @Override\r\n    public void onSplineClick(SplineClickEvent splineClickEvent)\r\n    {\r\n            com.github.highcharts4gwt.model.highcharts.object.api.Series series = splineClickEvent.getSeries();\r\n            String name = series.name();\r\n            Window.alert(\"Sline \" + name + \" clicked\");\r\n    }\r\n});\r\n\r\n\r\noptions.plotOptions().pie().addPieClickHandler(new PieClickHandler()\r\n{\r\n    \r\n    @Override\r\n    public void onPieClick(PieClickEvent pieClickEvent)\r\n    {\r\n            com.github.highcharts4gwt.model.highcharts.object.api.Series series = pieClickEvent.getSeries();\r\n            String name = series.name();\r\n            Window.alert(\"Pie \" + name + \" clicked\");\r\n    }\r\n});";
-    }
+    public String visitSolidGauge(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitColumnLineAndPie")
     @Override
-    public String visitPolarChart(Void in)
-    {
-        return "";
-    }
+    public String visitColumnLineAndPie(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitTreeMapWithColumnAxis")
     @Override
-    public String visitTreeMapWithColumnAxis(Void in)
-    {
-        return "";
-    }
+    public String visitPolarChart(Void in);
+
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitTreeMapWithColumnAxis")
+    @Override
+    public String visitTreeMapWithColumnAxis(Void in);
 }

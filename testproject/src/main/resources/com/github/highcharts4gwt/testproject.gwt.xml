@@ -22,5 +22,9 @@
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client' />
+  
+  <generate-with class="com.github.ronanquillevere.generator.ExportGenerator">
+		<when-type-assignable class="com.github.highcharts4gwt.client.model.highcharts.ChartCodeVisitor" /> 
+	</generate-with> 
 
 </module>
