@@ -722,6 +722,14 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.series().addToEnd(series);
         
+        String function = "function () " +
+        "{" +
+            "return 'The value for <b>' + this.x +'</b> is <b>' + this.y + '</b>';"+
+        "}";
+        
+        options.tooltip().setFunctionAsString("formatter", function);
+        
+        
         options.title().text("Highcharts Treemap");
         return options;
  
