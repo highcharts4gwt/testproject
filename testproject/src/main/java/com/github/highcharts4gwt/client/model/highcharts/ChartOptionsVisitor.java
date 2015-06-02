@@ -8,7 +8,14 @@ import com.github.highcharts4gwt.model.array.api.ArrayString;
 import com.github.highcharts4gwt.model.factory.api.HighchartsOptionFactory;
 import com.github.highcharts4gwt.model.highcharts.object.api.Point;
 import com.github.highcharts4gwt.model.highcharts.option.api.ChartOptions;
-import com.github.highcharts4gwt.model.highcharts.option.api.Series;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesArea;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesBar;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesColumn;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesGauge;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesLine;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesPie;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesSpline;
+import com.github.highcharts4gwt.model.highcharts.option.api.SeriesTreemap;
 import com.github.highcharts4gwt.model.highcharts.option.api.labels.Item;
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.column.ColumnClickEvent;
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.column.ColumnClickHandler;
@@ -18,7 +25,7 @@ import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.series.
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.series.SeriesClickHandler;
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickEvent;
 import com.github.highcharts4gwt.model.highcharts.option.api.plotoptions.spline.SplineClickHandler;
-import com.github.highcharts4gwt.model.highcharts.option.api.series.Data;
+import com.github.highcharts4gwt.model.highcharts.option.api.seriesgauge.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
 import com.github.ronanquillevere.generator.ExportAnnotations.ExportMaker;
 import com.google.gwt.user.client.Window;
@@ -49,7 +56,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.plotOptions().column().depth(25);
 
-        Series series = highchartsFactory.createSeries();
+        SeriesColumn series = highchartsFactory.createSeriesColumn();
 
         ArrayNumber data = series.dataAsArrayNumber();
         data.push(29.9);
@@ -104,7 +111,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.plotOptions().series().states().hover().halo().size(20);
 
-        Series series1 = highchartsFactory.createSeries();
+        SeriesLine series1 = highchartsFactory.createSeriesLine();
         ArrayNumber data = series1.dataAsArrayNumber();
         data.push(7.0);
         data.push(6.9);
@@ -120,7 +127,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data.push(9.6);
         series1.name("Tokyo");
 
-        Series series2 = highchartsFactory.createSeries();
+        SeriesLine series2 = highchartsFactory.createSeriesLine();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(-0.2);
         data2.push(0.8);
@@ -136,7 +143,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.push(2.5);
         series2.name("New York");
 
-        Series series3 = highchartsFactory.createSeries();
+        SeriesLine series3 = highchartsFactory.createSeriesLine();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(-0.9);
         data3.push(0.6);
@@ -152,7 +159,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data3.push(1.0);
         series3.name("Berlin");
 
-        Series series4 = highchartsFactory.createSeries();
+        SeriesLine series4 = highchartsFactory.createSeriesLine();
         ArrayNumber data4 = series4.dataAsArrayNumber();
         data4.push(3.9);
         data4.push(4.2);
@@ -230,7 +237,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
             }
         });
 
-        Series series1 = highchartsFactory.createSeries();
+        SeriesArea series1 = highchartsFactory.createSeriesArea();
 
         // TODO replace 0 by null ...
         ArrayNumber data = series1.dataAsArrayNumber();
@@ -305,7 +312,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         series1.name("USA");
 
-        Series series2 = highchartsFactory.createSeries();
+        SeriesArea series2 = highchartsFactory.createSeriesArea();
         ArrayNumber data2 = series2.dataAsArrayNumber();
 
         // TODO replace 0 by null ...
@@ -416,7 +423,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.credits().enabled(false);
 
-        Series series1 = highchartsFactory.createSeries();
+        SeriesBar series1 = highchartsFactory.createSeriesBar();
         ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(107);
         data1.push(31);
@@ -425,7 +432,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data1.push(2);
         series1.name("Year 1800");
 
-        Series series2 = highchartsFactory.createSeries();
+        SeriesBar series2 = highchartsFactory.createSeriesBar();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(133);
         data2.push(156);
@@ -434,7 +441,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         data2.push(6);
         series2.name("Year 1900");
 
-        Series series3 = highchartsFactory.createSeries();
+        SeriesBar series3 = highchartsFactory.createSeriesBar();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(973);
         data3.push(914);
@@ -483,10 +490,10 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
 
         options.credits().enabled(false);
 
-        Series series = highchartsFactory.createSeries();
+        SeriesGauge series = highchartsFactory.createSeriesGauge();
         Array<Data> dataList = series.dataAsArrayObject();
 
-        Data data = highchartsFactory.createData();
+        Data data = highchartsFactory.createSeriesGaugeData();
         data.name("Speed");
         data.y(80);
         data.dataLabels("{\r\n    \"format\": \"<divstyle=\\\"text-align: center\\\"><span style=\\\"font-size: 25px;color: black\\\">{y}</span><br/><span style=\\\"font-size: 12px;color: silver\\\">km/h</span></div>\"\r\n}");
@@ -520,7 +527,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         item.html("Total fruit consumption").style("{" + "\"left\": \"50px\"," + "\"top\": \"18px\"," + "\"color\": \"black\"" + "}");
         items.addToEnd(item);
         
-        Series series1 = highchartsFactory.createSeries();
+        SeriesColumn series1 = highchartsFactory.createSeriesColumn();
         ArrayNumber data1 = series1.dataAsArrayNumber();
         data1.push(3);
         data1.push(2);
@@ -530,7 +537,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series1.name("Jane");
         series1.type("column");
 
-        Series series2 = highchartsFactory.createSeries();
+        SeriesColumn series2 = highchartsFactory.createSeriesColumn();
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(2);
         data2.push(3);
@@ -540,7 +547,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series2.name("John");
         series2.type("column");
 
-        Series series3 = highchartsFactory.createSeries();
+        SeriesColumn series3 = highchartsFactory.createSeriesColumn();
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(4);
         data3.push(3);
@@ -550,7 +557,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         series3.name("Joe");
         series3.type("column");
         
-        Series series4 = highchartsFactory.createSeries();
+        SeriesSpline series4 = highchartsFactory.createSeriesSpline();
         ArrayNumber data4 = series4.dataAsArrayNumber();
         data4.push(3);
         data4.push(2.67);
@@ -562,19 +569,18 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.plotOptions().spline().marker().lineWidth(3).lineColor("#f7a35c").fillColor("white");
 
+        SeriesPie series5 = highchartsFactory.createSeriesPie();
+        Array<com.github.highcharts4gwt.model.highcharts.option.api.seriespie.Data> dataList = series5.dataAsArrayObject();
         
-        Series series5 = highchartsFactory.createSeries();
-        Array<Data> dataList = series5.dataAsArrayObject();
-        
-        Data d1 = highchartsFactory.createData();
+        com.github.highcharts4gwt.model.highcharts.option.api.seriespie.Data d1 = highchartsFactory.createSeriesPieData();
         d1.y(13).name("Jane").color("#7cb5ec");
         dataList.addToEnd(d1);
         
-        Data d2 = highchartsFactory.createData();
+        com.github.highcharts4gwt.model.highcharts.option.api.seriespie.Data d2 = highchartsFactory.createSeriesPieData();
         d2.y(23).name("John").color("#434348");
         dataList.addToEnd(d2);
         
-        Data d3 = highchartsFactory.createData();
+        com.github.highcharts4gwt.model.highcharts.option.api.seriespie.Data d3 = highchartsFactory.createSeriesPieData();
         d3.y(19).name("Joe").color("#90ed7d");
         dataList.addToEnd(d3);
 
@@ -658,7 +664,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         //TODO missing formater
         
         options.plotOptions().column().pointPlacementAsString("between");
-        Series series = highchartsFactory.createSeries().type("column").name("Column");
+        SeriesColumn series = highchartsFactory.createSeriesColumn().type("column").name("Column");
         ArrayNumber data1 = series.dataAsArrayNumber();
         data1.push(8);
         data1.push(7);
@@ -671,7 +677,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.series().addToEnd(series);
          
-        Series series2 = highchartsFactory.createSeries().type("line").name("Line");
+        SeriesLine series2 = highchartsFactory.createSeriesLine().type("line").name("Line");
         ArrayNumber data2 = series2.dataAsArrayNumber();
         data2.push(1);
         data2.push(2);
@@ -684,7 +690,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.series().addToEnd(series2);
         
-        Series series3 = highchartsFactory.createSeries().type("area").name("Area");
+        SeriesArea series3 = highchartsFactory.createSeriesArea().type("area").name("Area");
         ArrayNumber data3 = series3.dataAsArrayNumber();
         data3.push(1);
         data3.push(8);
@@ -708,9 +714,9 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         
         options.setFieldAsJsonObject("colorAxis", "{ \"minColor\" : \"#FFFFFF\", \"maxColor\" : \"#7cb5ec\"}");
         
-        Series series = highchartsFactory.createSeries();
+        SeriesTreemap series = highchartsFactory.createSeriesTreemap();
         series.type("treemap").setFieldAsJsonObject("layoutAlgorithm", "\"squarified\"");
-        Array<Data> dataList = series.dataAsArrayObject();
+        Array<com.github.highcharts4gwt.model.highcharts.option.api.seriestreemap.Data> dataList = series.dataAsArrayObject();
         
         dataList.addToEnd(createTreeMapDataObject("A", "6", 1));
         dataList.addToEnd(createTreeMapDataObject("B", "6", 2));
@@ -735,9 +741,9 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
  
     }
     
-    private Data createTreeMapDataObject(String name, String value, double colorValue)
+    private com.github.highcharts4gwt.model.highcharts.option.api.seriestreemap.Data createTreeMapDataObject(String name, String value, double colorValue)
     {
-        Data data = highchartsFactory.createData();
+        com.github.highcharts4gwt.model.highcharts.option.api.seriestreemap.Data data = highchartsFactory.createSeriesTreemapData();
         data.name(name).colorValue(colorValue);
         data.setFieldAsJsonObject("value", value);
         return data;
