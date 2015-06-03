@@ -7,7 +7,7 @@
 	<groupId>com.github.highcharts4gwt</groupId>
 	<artifactId>testproject</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>GWT Maven Archetype</name>
 
 	<properties>
@@ -56,7 +56,7 @@
 		<dependency>
 		    <groupId>com.github.highcharts4gwt</groupId>
 		    <artifactId>highcharts</artifactId>
-		    <version>0.0.4</version>
+		    <version>0.0.6</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
@@ -130,6 +130,7 @@
 					<hostedWebapp>${webappDirectory}</hostedWebapp>
 					<compileSourcesArtifacts>
 						<artifact>com.github.highcharts4gwt:highcharts</artifact>
+						<!-- <artifact>com.github.ronanquillevere:exportcodestring</artifact> -->
 					</compileSourcesArtifacts>
 					<!-- <i18nMessagesBundle>org.github.gwthighcharts.client.Messages</i18nMessagesBundle> -->
 
