@@ -34,7 +34,7 @@ public interface ChartCodeVisitor extends ChartVisitor<Void, String>
     @Override
     public String visitColumnLineAndPie(Void in);
 
-    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitTreeMapWithColumnAxis")
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitPolarChart")
     @Override
     public String visitPolarChart(Void in);
 

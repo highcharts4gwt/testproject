@@ -794,7 +794,7 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
         SeriesArea series1 = highchartsFactory.createSeriesArea();
 
         ArrayNumber data = series1.dataAsArrayNumber();
-
+        
         data.push(0.8446);
         data.push(0.8445);
         data.push(0.8444);
