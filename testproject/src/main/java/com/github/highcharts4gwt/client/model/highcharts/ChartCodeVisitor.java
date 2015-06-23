@@ -14,6 +14,10 @@ public interface ChartCodeVisitor extends ChartVisitor<Void, String>
     @Override
     public String visitBasicLine(Void in);
 
+    @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitTimeSeriesZoomable")
+    @Override
+    public String visitTimeSeriesZoomable(Void in);
+    
     @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitBasicArea")
     @Override
     public String visitBasicArea(Void in);
@@ -37,4 +41,6 @@ public interface ChartCodeVisitor extends ChartVisitor<Void, String>
     @ExportMethod(type = ChartOptionsVisitor.class, marker = "visitTreeMapWithColumnAxis")
     @Override
     public String visitTreeMapWithColumnAxis(Void in);
+    
+
 }

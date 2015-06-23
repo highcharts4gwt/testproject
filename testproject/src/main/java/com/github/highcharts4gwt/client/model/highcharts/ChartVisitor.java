@@ -5,6 +5,8 @@ public interface ChartVisitor<IN, OUT>
     OUT visitChart3D (IN in);
     
     OUT visitBasicLine (IN in);
+    
+    OUT visitTimeSeriesZoomable (IN in);
 
     OUT visitBasicArea (IN in);
     

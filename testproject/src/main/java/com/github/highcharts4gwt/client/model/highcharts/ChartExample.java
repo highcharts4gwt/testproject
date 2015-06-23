@@ -55,6 +55,34 @@ public enum ChartExample
             return "Basic line";
         }
     },
+    TimeSeriesZoomable
+    {
+
+        @Override
+        public <IN, OUT> OUT accept(ChartVisitor<IN, OUT> visitor, IN in)
+        {
+            return visitor.visitTimeSeriesZoomable(in);
+        }
+
+        @Override
+        public String getUrlId()
+        {
+            return toString();
+        }
+
+        @Override
+        public ChartCategory getCategory()
+        {
+            return ChartCategory.Line;
+        }
+
+        @Override
+        public String getLinkText()
+        {
+            return "Time series, zoomable";
+        }
+        
+    },
     BasicArea
     {
         @Override
