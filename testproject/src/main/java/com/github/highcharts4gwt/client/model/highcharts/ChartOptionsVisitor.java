@@ -20,6 +20,7 @@ import com.github.highcharts4gwt.model.highcharts.option.api.labels.Item;
 import com.github.highcharts4gwt.model.highcharts.option.api.seriesgauge.Data;
 import com.github.highcharts4gwt.model.highcharts.option.api.seriesline.ClickEvent;
 import com.github.highcharts4gwt.model.highcharts.option.api.seriesline.ClickHandler;
+import com.github.highcharts4gwt.model.highcharts.option.api.seriesline.PointFormatterCallback;
 import com.github.highcharts4gwt.model.highcharts.option.api.yaxis.PlotLine;
 import com.github.ronanquillevere.generator.ExportAnnotations.ExportMaker;
 import com.google.gwt.user.client.Window;
@@ -202,6 +203,27 @@ public class ChartOptionsVisitor implements ChartVisitor<Void, ChartOptions>
                 // double x = point0.x();
 
                 Window.alert("Series " + name + " clicked" + "\nNumber of points : " + points.length());
+            }
+        });
+        
+        series1.tooltip().pointFormatter(new PointFormatterCallback()
+        {
+            
+            @Override
+            public String onCallback(Point Point)
+            {
+                String value = "Custom point tooltip, point " + Point.categoryAsString() + ", value: " +  Point.y();
+                return value ;
+            }
+        });
+        
+        series1.point().addClickHandler(new com.github.highcharts4gwt.model.highcharts.option.api.seriesline.point.ClickHandler()
+        {           
+            @Override
+            public void onClick(com.github.highcharts4gwt.model.highcharts.option.api.seriesline.point.ClickEvent clickEvent)
+            {
+                Point point = clickEvent.point();
+                Window.alert("Category: " + point.categoryAsString() + ", value: " +  point.y());                
             }
         });
 
